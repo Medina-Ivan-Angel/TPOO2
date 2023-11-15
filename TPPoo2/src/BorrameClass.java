@@ -1,9 +1,10 @@
 
 public class BorrameClass {
-
+	private int numero;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		// HOLA SOY NACHOOOOOO probando JDK 20.0.0
+		
 	}
 
 }
