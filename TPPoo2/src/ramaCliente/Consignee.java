@@ -1,5 +1,7 @@
 package ramaCliente;
 
+import java.time.LocalDateTime;
+
 public class Consignee extends Cliente {
 
 	/*
@@ -10,6 +12,8 @@ public class Consignee extends Cliente {
 	
 	//Atributos
 	private TerminalPortuaria origen; //TODO: Hace falta esto? La orden de importacion ya lo tiene
+	
+	
 	
 	//CONSTRUCTOR
 	public Consignee(OrdenImportacion ordenImportacion) {
@@ -37,5 +41,14 @@ public class Consignee extends Cliente {
 	public TerminalPortuaria getOrigen() {
 		return this.origen;
 	}
-
+	
+	public LocalDateTime getFechaYHoraDeLlegada(){
+		
+		return this.buzon.stream()									 // Buzon de la superclase Cliente
+                		 .filter(mail -> mail instanceof MailFecha)  // obtenemos los mails que sean MailFecha 
+                		 .map(mail -> ((MailFecha) mail).getFecha()) // obtenemos el atributo fecha de dicho mail
+                		 .findFirst() 								 // Nos quedamos con la primera fecha encontrada (teoricamente deberia haber solo 1)
+                		 .orElse(null); 							 // Devolvemos null si no hay mailFecha
+	}
+	
 }
