@@ -48,7 +48,7 @@ public class Consignee extends Cliente {
                 		 .filter(mail -> mail instanceof MailFecha)  // obtenemos los mails que sean MailFecha 
                 		 .map(mail -> ((MailFecha) mail).getFecha()) // obtenemos el atributo fecha de dicho mail
                 		 .findFirst() 								 // Nos quedamos con la primera fecha encontrada (teoricamente deberia haber solo 1)
-                		 .orElse(null); 							 // Devolvemos null si no hay mailFecha
+                		 .orElse(null); 							 // Devolvemos null si no hay mailFecha (Asumiremos que siempre hay?)
 	}
 	
 }
