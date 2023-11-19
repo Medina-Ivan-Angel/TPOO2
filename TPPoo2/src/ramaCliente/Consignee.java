@@ -11,7 +11,9 @@ public class Consignee extends Cliente {
 	 */
 	
 	//Atributos
-	private TerminalPortuaria origen; //TODO: Hace falta esto? La orden de importacion ya lo tiene
+	//TODO: Hace falta esto? La orden de importacion ya lo tiene.
+	//OBS: Puede que deba conocerlo de antemano para elegir la mejor ruta/viaje en la terminal
+	private TerminalPortuaria origen; 
 	
 	
 	

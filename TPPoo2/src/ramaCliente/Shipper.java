@@ -10,7 +10,9 @@ public class Shipper extends Cliente {
 	
 	
 	//Atributos
-	private TerminalPortuaria destino; //TODO: Implementar Terminal / terminal portuaria ¿No viene ya dado por la orden de exportacion?
+	//TODO: Implementar Terminal / terminal portuaria ¿No viene ya dado por la orden de exportacion?
+	//OBS: Puede que deba conocerlo de antemano para elegir la mejor ruta/viaje en la terminal
+	private TerminalPortuaria destino; 
 	
 	
 	//CONSTRUCTOR
