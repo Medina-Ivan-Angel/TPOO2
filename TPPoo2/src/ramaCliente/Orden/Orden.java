@@ -65,4 +65,8 @@ public abstract class Orden {
 	public void setChofer(Chofer chofer) {
 		this.chofer = chofer;
 	}
+	
+	public List<Servicio> getServicios(){
+		return this.servicios;
+	}
 }
