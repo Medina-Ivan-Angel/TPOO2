@@ -25,6 +25,9 @@ public abstract class Cliente {
 		return this.orden;
 	}
 	
+	public void recibirMail(Mail mail) {
+		this.buzon.add(mail);
+	}
 	
 	public abstract Chofer informarChoferDesignado(); //TODO: falta implementar chofer por Victor.
 	
