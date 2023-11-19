@@ -32,6 +32,7 @@ public class Buque {
 		   zarpó, y la terminal Destino, qu sería el punto B, y listo. 
 		   además después vamos a agregar el metodo al buque para setearle las 
 		   coordenadas que precisemos.
+		   ahora mergeo
 		   
 		 * */
 		 
