@@ -22,4 +22,13 @@ public class EmpresaDeTransporte {
 		return(this.nombre);
 	}
 	
+	public void addEmpleados(Chofer chofer) {
+		this.empleados.add(chofer);
+	}
+	
+	public void addCamion(Camion camion) {
+		this.flotaDeCamiones.add(camion);
+	}
+	
+	
 }
