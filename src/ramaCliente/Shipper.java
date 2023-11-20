@@ -1,5 +1,7 @@
 package ramaCliente;
 
+import ramaCliente.Orden.OrdenExportacion;
+
 public class Shipper extends Cliente {
 
 	/*

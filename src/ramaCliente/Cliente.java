@@ -2,6 +2,7 @@ package ramaCliente;
 
 import java.util.List;
 
+import ramaAuxiliar.Mail;
 import ramaCliente.Orden.Orden;
 
 import java.util.ArrayList;

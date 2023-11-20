@@ -31,10 +31,10 @@ public abstract class Factura {
 	// TEMPLATE METHOD
 	public String desgloce() {
 		
-		this.imprimirFecha();				//PASO 1
-		this.imprimirServiciosYCostos();	//PASO 2
-		this.imprimirCostosTramos();		//PASO 3 (hook method)
-		this.imprimirCostoTotal();			//PASO 4 (hook method)
+		return this.imprimirFecha() +				//PASO 1
+			   this.imprimirServiciosYCostos() +	//PASO 2
+			   this.imprimirCostosTramos() +		//PASO 3 (hook method)
+			   this.imprimirCostoTotal();			//PASO 4 (hook method)
 	}
 	
 	

@@ -29,7 +29,7 @@ public class FacturaConsignee extends Factura {
 		// sumamos el costo de los servicios y los tramos recorridos 
 		double costoTotal =  this.costoTotalServicios() + this.costoTotalTramos();
 		
-		return "Monto Total : " + costoTotal + "\n";;
+		return "Monto Total : " + costoTotal + "\n";
 	}
 	
 	public double costoTotalTramos() {
