@@ -1,7 +1,8 @@
 package ramaNavieraCircuitos;
 import java.util.List;
-import java.util.List.*;
+import java.util.ArrayList;
 
+import ramaFasesDelBuque.*;
 
 
 public class Circuito {
@@ -11,6 +12,14 @@ public class Circuito {
 	public Circuito(List<Tramo> tramos) {
 		this.tramos = tramos;
 	}
+	
+	/*
+	 * Se crearon los getters y setters para el atributo tramos de esta clase, 
+	 * porque se van a utilizar al momento de realizar los tests.
+	 * Además, por la manera en la que se inicializó la lista, 
+	 * se va a agregar cada elemento de forma individual, 
+	 * en el apartado setUp de cada uno de los tests en las que se utilicen.
+	 * */
 	
 	public List<Tramo> getTramos() {
 		return this.tramos;

@@ -2,18 +2,10 @@ package ramaFasesDelBuque;
 
 public class Buque {
 	
-	private String darPreaviso;
 	private Fases estado;
 
-	public Buque(String darPreaviso, Fases estado) {
-		this.darPreaviso = darPreaviso;
+	public Buque(Fases estado) {
 		this.estado = estado;
-	}
-	
-	public String getDarPreaviso() {
-	
-	return this.darPreaviso;
-	
 	}
 	
 	public int calcularDistancia(Coordenada coordenada) {
@@ -39,7 +31,13 @@ public class Buque {
 		 
 		 return 0;
 		
-	}	
+	}
+	
+	public String darPreaviso() {
+		// TODO: todavía no sé bien que hace
+	}
+	
+		
 	
 	public void setEstado(Fases nuevoEstado) {
 		this.estado = nuevoEstado;

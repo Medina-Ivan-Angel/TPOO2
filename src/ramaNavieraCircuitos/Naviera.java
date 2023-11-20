@@ -1,7 +1,8 @@
 package ramaNavieraCircuitos;
-import java.util.List.*;
-import java.util.ArrayList.*;
 import java.util.List;
+import java.util.ArrayList;
+
+import ramaFasesDelBuque.*;
 
 
 
@@ -12,9 +13,18 @@ public class Naviera {
 
 
 	public Naviera(List<Buque> flota, List<Circuito> circuitosMaritimos) {
-		this.flota = flota;
-		this.circuitosMaritimos = circuitosMaritimos;
+		this.flota = new ArrayList<Buque>();
+		this.circuitosMaritimos = new ArrayList<Circuito>();
 	}
+	
+	/*
+	 * Se crearon los getters y setters para ambos atributos de esta clase, 
+	 * porque se van a utilizar al momento de realizar los tests.
+	 * Además, por la manera en la que se inicializaron las listas, 
+	 * se va a agregar cada elemento de forma individual a cada una de ellas, 
+	 * en el apartado setUp de cada uno de los tests en las que se utilicen.
+	 * */
+	
 	
 	public List<Buque> getFlota() {
 		return this.flota;
