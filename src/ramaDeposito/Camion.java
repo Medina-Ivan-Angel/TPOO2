@@ -24,6 +24,10 @@ public class Camion {
 		return(this.nroDeSerie);
 	}
 	
+		/*
+		 * Metodo para cuando se confirma que es el camion
+		 * correcto para descargarlo.
+		*/
 	public Container descargar() {
         Container containerParaDescargar = this.carga;
         this.carga = null; // el camión ya no tiene el contenedor
