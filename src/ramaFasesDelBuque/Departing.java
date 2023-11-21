@@ -1,6 +1,6 @@
 package ramaFasesDelBuque;
 
-public class Departing implements Fases {
+public class Departing implements Fase {
 
 	public Departing() {}
 	

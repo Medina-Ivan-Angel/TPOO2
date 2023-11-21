@@ -4,12 +4,14 @@ import ramaNavieraCircuitos.Viaje;
 
 public class Buque {
 	
-	private Fases estado;
+	private Fase estado;
 	private Viaje viaje;
+	private Coordenada posicion;
 
-	public Buque(Fases estado, Viaje viaje) {
+	public Buque(Fase estado, Viaje viaje, Coordenada posicion) {
 		this.viaje = viaje;
 		this.estado = estado;
+		this.posicion = posicion;
 	}
 	
 	public int calcularDistancia(Coordenada coordenada) {
@@ -38,12 +40,13 @@ public class Buque {
 	}
 	
 	public String darPreaviso() {
-		// TODO: todavía no sé bien que hace
+		/* TODO: enviar un mail de preaviso con un buque a la Terminal 
+		 para que informe a los consignees */
 	}
 	
 		
 	
-	public void setEstado(Fases nuevoEstado) {
+	public void setEstado(Fase nuevoEstado) {
 		this.estado = nuevoEstado;
 	}
 	
@@ -59,5 +62,9 @@ public class Buque {
 	
 	public Viaje getViaje() {
 		return this.viaje;
+	}
+	
+	public Coordenada getPosicion() {
+		return this.posicion;
 	}
 }

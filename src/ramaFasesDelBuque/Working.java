@@ -1,6 +1,6 @@
 package ramaFasesDelBuque;
 
-public class Working implements Fases {
+public class Working implements Fase {
 
 	public Working() {}
 	
