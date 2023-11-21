@@ -25,5 +25,11 @@ public class Viaje {
 					 .sum();
 	}
 	
+	// GETTERS Y SETTERS:
+	
+	public Terminal getTerminalDestino() {
+		return this.terminalDestino;
+	}
+	
 
 }

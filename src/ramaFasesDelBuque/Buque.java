@@ -1,12 +1,15 @@
 package ramaFasesDelBuque;
 
+import ramaNavieraCircuitos.Viaje;
+
 public class Buque {
 	
 	
 	private Fases estado;
+	private Viaje viaje;
 
-	public Buque(Fases estado) {
-		
+	public Buque(Fases estado, Viaje viaje) {
+		this.viaje = viaje;
 		this.estado = estado;
 	}
 	
@@ -47,4 +50,9 @@ public class Buque {
 		
 	}
 		
+	// GETTERS AND SETTERS:
+	
+	public Viaje getViaje() {
+		return this.viaje;
+	}
 }

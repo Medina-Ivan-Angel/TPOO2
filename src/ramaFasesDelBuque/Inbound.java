@@ -1,8 +1,6 @@
 package ramaFasesDelBuque;
 
 public class Inbound implements Fases {
-	private int borrame;
-	public Inbound() {}
 	
 	/*
 	 * hace tal cual la consigna, acá dice menor, asique pongo menor estricto, 
@@ -12,16 +10,17 @@ public class Inbound implements Fases {
 	 * 
 	 * */
 	
+	public Inbound() {}
+	
 	@Override
-	int coordenadasDeLaTerminalDestino = TerminalDestino.getCoordenada();
 	public void accion(Buque buque) {
-		if (laDistanciaEntreElBuqueYLaTerminalDestinoEsMenorA50KM(Buque buque)) {
+		if (distanciaALaTerminalMenorA50KM(Buque buque)) {
 			return buque.darPreaviso();
 			else {
 			buque.setEstado(Inbound);
 		}
 		
-	public boolean laDistanciaEntreElBuqueYLaTerminalDestinoEsMenorA50KM(Buque buque) {
+	public boolean distanciaALaTerminalMenorA50KM(Buque buque) {
 		
 		return (buque.calcularDistancia(coordenadasDeLaTerminalDestino) < 50);
 	}
