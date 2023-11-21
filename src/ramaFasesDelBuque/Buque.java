@@ -2,11 +2,10 @@ package ramaFasesDelBuque;
 
 public class Buque {
 	
-	
 	private Fases estado;
 
 	public Buque(Fases estado) {
-		
+
 		this.estado = estado;
 	}
 	
@@ -33,7 +32,13 @@ public class Buque {
 		 
 		 return 0;
 		
-	}	
+	}
+	
+	public String darPreaviso() {
+		// TODO: todavía no sé bien que hace
+	}
+	
+		
 	
 	public void setEstado(Fases nuevoEstado) {
 		this.estado = nuevoEstado;
