@@ -1,3 +1,4 @@
+// Package de la clase.
 package ramaDeposito;
 
 public class Chofer {
@@ -11,7 +12,7 @@ public class Chofer {
 	}
 	
 	// Metodos.
-		//Getter.
+		// Getter.
 	public String getNombre() {
 		return(this.name);
 	}

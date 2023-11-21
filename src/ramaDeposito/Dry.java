@@ -1,3 +1,4 @@
+// Package de la clase.
 package ramaDeposito;
 
 public class Dry extends Container{

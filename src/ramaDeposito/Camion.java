@@ -1,3 +1,4 @@
+// Package de la clase.
 package ramaDeposito;
 
 public class Camion {
@@ -34,9 +35,16 @@ public class Camion {
 		 * Metodo para cuando se confirma que es el camion
 		 * correcto para descargarlo.
 		*/
-	public Container descargar() {
-        Container containerParaDescargar = this.carga;
+	public Container descargar() throws Exception {
+        this.validarQueTieneCarga();
+		Container containerParaDescargar = this.carga;
         this.carga = null; // el camión ya no tiene el contenedor
         return containerParaDescargar;
     }
+
+	private void validarQueTieneCarga() throws Exception {
+		if(carga == null) {
+			throw new Exception("No hay carga para descargar.");
+		}
+	}
 }

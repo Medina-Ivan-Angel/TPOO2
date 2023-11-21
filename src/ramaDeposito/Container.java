@@ -1,3 +1,4 @@
+// Package de la clase.
 package ramaDeposito;
 
 public abstract class Container {
@@ -8,6 +9,12 @@ public abstract class Container {
 	protected double largo;
 	protected double pesoTotal;
 	
-
+	
+	// Metodos.
+		// Getter.
+	public double getPeso() {
+		return(this.pesoTotal);
+	}
+	
 	
 }

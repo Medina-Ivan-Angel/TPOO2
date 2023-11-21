@@ -1,9 +1,11 @@
+// Package de la clase.
 package ramaDeposito;
 
 public class Reefer extends Container{
 
 	// Atributos.
 	private double consumo;
+	
 	
 	// Constructor
 	public Reefer(double ancho, double altura, double largo, double pesoTotal, double consumo) {
@@ -14,6 +16,12 @@ public class Reefer extends Container{
 		this.consumo = consumo;
 	}
 	
+	
+	// Metodos.
+		// Getter.
+	public double getConsumo() {
+		return(this.consumo);
+	}
 	
 
 }
