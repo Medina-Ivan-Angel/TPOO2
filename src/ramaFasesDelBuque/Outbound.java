@@ -1,11 +1,13 @@
 package ramaFasesDelBuque;
 
 public class Outbound implements Fases {
+	// ATRIBUTOS:
+	private Fases proximoEstado = new Inbound();
+	// CONSTRUCTOR:	
+	public Outbound() {}
 
-	public Outbound() {
-	}
-	
 	/*
+	 * TODO: REEMPLAZAR ESTE POR LO QUE DICE EL OBJETIVO DE LA CONSIGNA
 	 * Este override específico para este estado concreto del buque, lo que intento 
 	 * hacer en este codigo es:
 	 * 1) pedirle a la terminal de destino, es decir, a la que el buque esté 
@@ -16,19 +18,18 @@ public class Outbound implements Fases {
 	 * y si eso es falso, simplemente pasa al siguiente estado que es Inbound.
 	 * Además saqué al booleano a una subtarea
 	 * */
+	// MÉTODOS:
 	
 	@Override
-	int coordenadasDeLaTerminalDestino = TerminalDestino.getCoordenada();
 	public void accion(Buque buque) {
-		if (laDistanciaEntreElBuqueYLaTerminalDestinoEsMayorA50KM(Buque buque)) {
-			return true o ("todavía estoy muy lejos de la terminal");
-			else {
-			buque.setEstado(Inbound);
+		if (distanciaALaTerminalMenorA50KM(buque)) {
+			buque.setEstado(this.proximoEstado);
 		}
-		
-	public boolean laDistanciaEntreElBuqueYLaTerminalDestinoEsMayorA50KM(Buque buque) {
-		
-		return (buque.calcularDistancia(coordenadasDeLaTerminalDestino) >= 50);
 	}
+		
+	public boolean distanciaALaTerminalMenorA50KM(Buque buque) {
+		return (buque.calcularDistancia(buque.getViaje().getTerminalDestino().getPosicion()) < 50);
+	}
+	// TODO: Se implementará getTerminalDestino() con la TerminalGestionada.
 
 }
