@@ -3,7 +3,7 @@ package ramaDeposito;
 
 public class Chofer {
 
-	// Atributos.
+	/*// Atributos.
 	private String name;
 	
 	// Constructor.
@@ -12,8 +12,8 @@ public class Chofer {
 	}
 	
 	// Metodos.
-		// Getter.
+		//Getter.
 	public String getNombre() {
 		return(this.name);
-	}
+	}*/
 }

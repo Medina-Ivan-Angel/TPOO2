@@ -1,19 +1,20 @@
 // Package de la clase.
 package ramaDeposito;
 
+// Imports de la clase.
+import java.time.LocalDateTime;
+
 public class Camion {
 
 	// Atributos.
 	private Container carga;
 	private Chofer conductor;
-	private int nroDeSerie;
-	private String hraDeLlegada;
+	private LocalDateTime hraDeLlegada;
 	
 	// Constructor.
-	public Camion(Container carga, Chofer conductor, int nroDeSerie, String hra) {
+	public Camion(Container carga, Chofer conductor, LocalDateTime hra) {
 		this.carga = carga;
 		this.conductor = conductor;
-		this.nroDeSerie = nroDeSerie;
 		this.hraDeLlegada = hra;
 	}
 	
@@ -23,11 +24,7 @@ public class Camion {
 		return(this.conductor);
 	}
 	
-	public int getNroDeSerie() {
-		return(this.nroDeSerie);
-	}
-	
-	public String getHraDeLlegada() {
+	public LocalDateTime getHraDeLlegada() {
 		return(this.hraDeLlegada);
 	}
 	

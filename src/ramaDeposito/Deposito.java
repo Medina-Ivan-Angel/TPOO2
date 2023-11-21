@@ -1,10 +1,12 @@
 // Package de la clase.
 package ramaDeposito;
 
+import java.time.Duration;
 //Imports.
 import java.util.ArrayList;
 import java.util.List;
 import ramaCliente.Orden.Orden;
+import ramaCliente.Orden.OrdenExportacion;
 
 public class Deposito {
 
@@ -46,14 +48,18 @@ public class Deposito {
 		 * que el Camion llega en Hora.
 		 */
 	private void camionLlegaConElContainerALaHoraCorrecta(Camion camion)  throws Exception  {
-		if(!this.noEsLaMismaHoraDeLlegada(camion)) {
+		if(!this.esLaMismaHoraDeLlegada(camion)) {
 			throw new Exception("No llego a la hora acordada.");
 		}
 		
 	}
 
-	private boolean noEsLaMismaHoraDeLlegada(Camion camion) {
-		return(true);
+	private boolean esLaMismaHoraDeLlegada(Camion camion) {
+		Duration duracion = Duration.between(null, null);
+		
+		return(
+				true
+		);
 	}
 
 	
@@ -62,15 +68,14 @@ public class Deposito {
 		 * sea el Camion y Chofer correctos. 
 		*/
 	private void clienteInformóChoferYCamion(Camion camion) throws Exception  {
-		if(!this.esChoferCorrecto(camion) || !this.esCamionCorresto(camion)) {
+		if(!this.esChoferCorrecto(camion) || !this.esCamionCorrecto(camion)) {
 			throw new Exception("No esta autorizado.");
 		}
 	}
 
-	private boolean esCamionCorresto(Camion camion) {
+	private boolean esCamionCorrecto(Camion camion) {
 		return(ordenesActivas.stream().anyMatch(
-				orden -> orden.getCamion().getNroDeSerie() ==
-						camion.getNroDeSerie()
+				orden -> orden.getCamion().equals(camion)
 				));
 	}
 
@@ -87,6 +92,19 @@ public class Deposito {
 		// que viene a retirar una) llega al deposito.
 	public void cargarCamion(Camion camion) {
 		this.clienteInformóChoferYCamion(camion);
+		camion.cargar(this.containerCorrespondiente(camion));
+	}
+
+
+	private Container containerCorrespondiente(Camion camion) {
+	    Container containerACargar = null;
+	    for (Orden orden : this.ordenesActivas) {
+	        if (orden.getCamion().equals(camion)) {
+	            containerACargar = orden.getCarga();
+	            break;
+	        }
+	    }
+	    return containerACargar;
 	}
 	
 }
