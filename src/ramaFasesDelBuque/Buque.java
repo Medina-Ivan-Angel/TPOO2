@@ -2,20 +2,24 @@ package ramaFasesDelBuque;
 
 public class Buque {
 	
-	private String darPreaviso;
 	private Fases estado;
 
-	public Buque(String darPreaviso, Fases estado) {
-		this.darPreaviso = darPreaviso;
+	public Buque(Fases estado) {
 		this.estado = estado;
 	}
 	
-	public String getDarPreaviso() {
-	
-	return this.darPreaviso;
-	
+	/*
+	 * Se definen los métodos mínimamente necesarios para poder hacer el patrón 
+	 * State para los estados de un buque.
+	 * 
+	 * */
+	 
+	public Fases getEstado() {
+		return this.estado;
 	}
 	
+	public String darPreaviso() {} // TODO: No sé que es concretamente dar un pre aviso.
+	 
 	public int calcularDistancia(Coordenada coordenada) {
 	
 		// TODO: lo trato de implementar más adelante a medida que voy avanzando
@@ -49,7 +53,7 @@ public class Buque {
 	
 		// TODO: ver que hacer acá, y ver de agregar el metodo para setearle cualquier coordenada al buque
 	
-		this.estado.accion();
+		this.estado.accion(this);
 		
 	}
 		
