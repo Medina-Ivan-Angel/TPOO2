@@ -4,7 +4,6 @@ import ramaNavieraCircuitos.Viaje;
 
 public class Buque {
 	
-	
 	private Fases estado;
 	private Viaje viaje;
 
@@ -36,7 +35,13 @@ public class Buque {
 		 
 		 return 0;
 		
-	}	
+	}
+	
+	public String darPreaviso() {
+		// TODO: todavía no sé bien que hace
+	}
+	
+		
 	
 	public void setEstado(Fases nuevoEstado) {
 		this.estado = nuevoEstado;

@@ -1,11 +1,10 @@
 package ramaNavieraCircuitos;
-import java.time.LocalTime;	
 
 public class Tramo {
 
 	private Terminal origen;
 	private Terminal destino;
-	private double distanciaEntrePuertos; // lo calculo yo con la formula mepa
+	private double distanciaEntrePuertos; 
 	private LocalTime duracionDelTramo;
 	private double costoDelTramo;
 
@@ -18,12 +17,32 @@ public class Tramo {
 		this.costoDelTramo = costoDelTramo;
 	}
 	
-	// aca se tienen que ir agregando todos los getters y setters a medida que se necesiten
+	/*
+	 * Se crearon sólamente los getters de todos los atributos de esta clase porque 
+	 * van a ser utilizados con frecuencia por otras clases relacionadas.
+	 * Los setters no se generaron porque las instancias de Tramo se crean, y se 
+	 * les asignan valores constantes.
+	 * */
 	
 	public double getCostoDelTramo() {
 	
 		return this.costoDelTramo;
-	
+	}
+
+	public Terminal getOrigen() {
+		return origen;
+	}
+
+	public Terminal getDestino() {
+		return destino;
+	}
+
+	public double getDistanciaEntrePuertos() {
+		return distanciaEntrePuertos;
+	}
+
+	public LocalTime getDuracionDelTramo() {
+		return duracionDelTramo;
 	}
 	
 

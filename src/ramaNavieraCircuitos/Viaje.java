@@ -18,8 +18,17 @@ public class Viaje {
 		this.terminalDestino = terminalDestino;
 	}
 	
-	public double costoDelViaje(List<Tramo> tramos) {
 	
+	/*
+	 * Este método calcula el costo total de un viaje sumando los costos individuales 
+	 * de todos los tramos que componen a un circuito. No se le pasa ningún parámetro, 
+	 * porque Viaje conoce a la clase Circuito, por lo tanto puede acceder a su 
+	 * lista de tramos por medio de su getter particular.
+	 * */
+	public double costoDelViaje() {
+	
+		List<Tramo> tramos = Circuito.getTramos();
+		
 		return tramos.stream()
 					 .mapToDouble(Tramo::getCostoDelTramo)
 					 .sum();
