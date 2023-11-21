@@ -19,10 +19,31 @@ public class Deposito {
 	}
 	
 	// Metodos.
-	public void registrarCargaEnElPuerto() {
-		this.clienteInformóChoferYCamion();
-		this.estaElCamionYChoferAutorizadosPorElConsignee();
-		this.camionLlegaConElContainerALaHoraCorrecta();
+	public void registrarCargaEnElPuerto(Camion carga) {
+		this.clienteInformóChoferYCamion(carga);
+		//this.estaElCamionYChoferAutorizadosPorElConsignee(carga);
+		this.camionLlegaConElContainerALaHoraCorrecta(carga);
+		this.containers.add(carga.descargar());
+	}
+
+	private void clienteInformóChoferYCamion(Camion carga) throws Exception  {
+		if(!this.esChoferCorrecto(carga) || !this.esCamionCorresto(carga)) {
+			throw new Exception("No esta autorizado.");
+		}
+	}
+
+	private boolean esCamionCorresto(Camion carga) {
+		return(ordenesActivas.stream().anyMatch(
+				orden -> orden.getCamion().getNroDeSerie() ==
+						carga.getNroDeSerie()
+				));
+	}
+
+	private boolean esChoferCorrecto(Camion carga) {
+		return(ordenesActivas.stream().anyMatch(
+				orden -> orden.getChofer().equals(
+						carga.getConductor())
+				));
 	}
 	
 }
