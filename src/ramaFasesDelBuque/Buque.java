@@ -2,18 +2,12 @@ package ramaFasesDelBuque;
 
 public class Buque {
 	
-	private String darPreaviso;
+	
 	private Fases estado;
 
-	public Buque(String darPreaviso, Fases estado) {
-		this.darPreaviso = darPreaviso;
+	public Buque(Fases estado) {
+		
 		this.estado = estado;
-	}
-	
-	public String getDarPreaviso() {
-	
-	return this.darPreaviso;
-	
 	}
 	
 	public int calcularDistancia(Coordenada coordenada) {
@@ -49,7 +43,7 @@ public class Buque {
 	
 		// TODO: ver que hacer acá, y ver de agregar el metodo para setearle cualquier coordenada al buque
 	
-		this.estado.accion();
+		this.estado.accion(this);
 		
 	}
 		
