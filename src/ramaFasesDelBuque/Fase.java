@@ -1,5 +1,5 @@
 package ramaFasesDelBuque;
 
-public interface Fases {
+public interface Fase {
 	public void accion(Buque buque);
 }
