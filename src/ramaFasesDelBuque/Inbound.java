@@ -1,7 +1,7 @@
 package ramaFasesDelBuque;
 
 public class Inbound implements Fases {
-
+	private int borrame;
 	public Inbound() {}
 	
 	/*
