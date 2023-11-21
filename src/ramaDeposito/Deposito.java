@@ -18,4 +18,11 @@ public class Deposito {
 		this.containers = carga;
 	}
 	
+	// Metodos.
+	public void registrarCargaEnElPuerto() {
+		this.clienteInformóChoferYCamion();
+		this.estaElCamionYChoferAutorizadosPorElConsignee();
+		this.camionLlegaConElContainerALaHoraCorrecta();
+	}
+	
 }
