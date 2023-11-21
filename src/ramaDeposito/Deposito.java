@@ -1,7 +1,7 @@
 // Package.
 package ramaDeposito;
 
-// Imports.
+//Imports.
 import java.util.ArrayList;
 import java.util.List;
 import ramaCliente.Orden.Orden;
@@ -21,10 +21,20 @@ public class Deposito {
 	// Metodos.
 	public void registrarCargaEnElPuerto(Camion carga) {
 		this.clienteInformóChoferYCamion(carga);
-		//this.estaElCamionYChoferAutorizadosPorElConsignee(carga);
 		this.camionLlegaConElContainerALaHoraCorrecta(carga);
 		this.containers.add(carga.descargar());
 	}
+
+	private void camionLlegaConElContainerALaHoraCorrecta(Camion carga)  throws Exception  {
+		if(!this.noEsLaMismaHoraDeLlegada(carga)) {
+			throw new Exception("No llego a la hora acordada.");
+		}
+		
+	}
+
+	private boolean noEsLaMismaHoraDeLlegada(Camion carga) {
+		return(true);
+;	}
 
 	private void clienteInformóChoferYCamion(Camion carga) throws Exception  {
 		if(!this.esChoferCorrecto(carga) || !this.esCamionCorresto(carga)) {
