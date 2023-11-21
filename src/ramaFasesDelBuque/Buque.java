@@ -5,6 +5,7 @@ public class Buque {
 	private Fases estado;
 
 	public Buque(Fases estado) {
+
 		this.estado = estado;
 	}
 	
@@ -47,7 +48,7 @@ public class Buque {
 	
 		// TODO: ver que hacer acá, y ver de agregar el metodo para setearle cualquier coordenada al buque
 	
-		this.estado.accion();
+		this.estado.accion(this);
 		
 	}
 		
