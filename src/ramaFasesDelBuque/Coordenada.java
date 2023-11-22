@@ -1,19 +1,17 @@
 package ramaFasesDelBuque;
 
 public class Coordenada {
-	
+	// ATRIBUTOS:
 	private int valorX;
 	private int valorY;
 	
+	// CONSTRUCTOR:
 	public Coordenada(int valorX, int valorY) {
 		this.valorX = valorX;
 		this.valorY = valorY;
 	}
 	
-	/*
-	 * Se crearon los getters y setters para poder asignar valores a elección
-	 * a las coordenadas de un buque.
-	 * */ 
+	// GETTERS Y SETTERS: 
 	
 	public int getValorX() {
 		return this.valorX;
@@ -31,5 +29,4 @@ public class Coordenada {
 		this.valorY = coordenadaY;
 	}
 		
-
 }
