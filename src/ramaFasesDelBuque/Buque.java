@@ -1,19 +1,28 @@
 package ramaFasesDelBuque;
 
 import ramaNavieraCircuitos.Viaje;
-
-public class Buque {
 	
+	public class Buque {
+	
+	// ATRIBUTOS:
 	private Fase estado;
 	private Viaje viaje;
 	private Coordenada posicion;
-
+	
+	// CONSTRUCTOR:
 	public Buque(Fase estado, Viaje viaje, Coordenada posicion) {
 		this.viaje = viaje;
 		this.estado = estado;
 		this.posicion = posicion;
 	}
 	
+	// MÉTODOS:
+	
+	/*
+	 * El método calcularDistancia utiliza la fórmula matemática para 
+	 * calcular la distancia entre 2 puntos en el plano, el primer punto 
+	 * es una instancia del buque, y el otro punto es la terminal de destino
+	 * */
 	public int calcularDistancia(Coordenada coordenada) {
 	
 		// TODO: lo trato de implementar más adelante a medida que voy avanzando

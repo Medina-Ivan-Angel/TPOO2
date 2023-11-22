@@ -1,8 +1,10 @@
 package ramaFasesDelBuque;
 
 public class Outbound implements Fase {
-	// ATRIBUTOS:
+
+	// ATRIBUTOS:	
 	private Fase proximoEstado = new Inbound();
+	
 	// CONSTRUCTOR:	
 	public Outbound() {}
 
