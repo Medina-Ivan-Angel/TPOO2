@@ -4,13 +4,18 @@ import java.time.LocalDateTime;
 
 import ramaAuxiliar.MailFecha;
 import ramaCliente.Orden.OrdenImportacion;
+import ramaDeposito.Camion;
+import ramaDeposito.Chofer;
 
 public class Consignee extends Cliente {
 
 	/*
 	 * El Consignee es el Importador su atributo heredado "orden" es
 	 * siempre una ordenImportacion.
-	 * El Consignee es quien TRAE carga hacia la terminal gestionada
+	 * El Consignee es quien TRAE carga hacia la terminal gestionada.
+	 * 
+	 * La fecha de llegada, el camion y el chofer
+	 * se setean en la terminal durante la operacion de importacion
 	 */
 	
 	//Atributos

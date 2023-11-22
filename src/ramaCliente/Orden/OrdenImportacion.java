@@ -2,6 +2,10 @@ package ramaCliente.Orden;
 
 import java.time.LocalDateTime;
 
+import ramaCliente.Cliente;
+import ramaDeposito.Container;
+import ramaFasesDelBuque.Buque;
+
 public class OrdenImportacion extends Orden {
 	
 	/*
@@ -13,7 +17,7 @@ public class OrdenImportacion extends Orden {
 	//Atributos
 	private TerminalPortuaria origen;			// Desde donde viene la carga
 	private LocalDateTime fechaLlegadaDeCarga;	// Cuando (fecha) llega la carga
-	private Buque buque; 						// TODO: A implementar por Ignacio
+	private Buque buque; 						
 	
 	//Constructor
 	public OrdenImportacion(Cliente cliente, 

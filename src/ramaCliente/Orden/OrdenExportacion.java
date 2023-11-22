@@ -3,6 +3,9 @@ package ramaCliente.Orden;
 import java.time.LocalDateTime;
 
 import ramaCliente.Cliente;
+import ramaDeposito.Camion;
+import ramaDeposito.Chofer;
+import ramaDeposito.Container;
 
 public class OrdenExportacion extends Orden {
 	

@@ -1,5 +1,7 @@
 package ramaCliente.Servicios;
 
+import ramaDeposito.Container;
+
 public class Lavado implements Servicio {
 
 	//ATRIBUTOS

@@ -1,5 +1,7 @@
 package ramaCliente.Servicios;
 
+import ramaDeposito.Container;
+
 public class Pesado implements Servicio {
 
 	//ATRIBUTOS
@@ -22,7 +24,7 @@ public class Pesado implements Servicio {
 
 	//Este metodo sera utilizado por la terminal para registrar el peso del container.
 	public double pesarContainer() {
-		return this.container.getPesoTotal();
+		return this.container.getPeso();
 	}
 	
 	

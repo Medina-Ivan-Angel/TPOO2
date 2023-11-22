@@ -1,6 +1,8 @@
 package ramaCliente;
 
 import ramaCliente.Orden.OrdenExportacion;
+import ramaDeposito.Camion;
+import ramaDeposito.Chofer;
 
 public class Shipper extends Cliente {
 
@@ -26,16 +28,12 @@ public class Shipper extends Cliente {
 	
 	@Override
 	public Chofer informarChoferDesignado() {
-		// TODO: Implementar. ¿Obtiene el chofer de la orden de exportacion?
-		//orden.getChofer()
-		return null;
+		return this.getOrden().getChofer(); // El chofer designado ya esta definido en la ordenExportacion
 	}
 
 	@Override
 	public Camion informarCamionDesignado() {
-		// TODO: Implementar. ¿Obtiene el camion de la orden de exportacion?
-		//orden.getCamion();
-		return null;
+		return this.getOrden().getCamion(); // El camion designado ya esta definido en la ordenExportacion
 	}
 	
 	

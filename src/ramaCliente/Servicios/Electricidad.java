@@ -2,6 +2,8 @@ package ramaCliente.Servicios;
 
 import java.time.Duration;
 
+import ramaDeposito.Reefer;
+
 public class Electricidad implements Servicio {
 
 	//ATRIBUTOS

@@ -4,6 +4,8 @@ import java.util.List;
 
 import ramaAuxiliar.Mail;
 import ramaCliente.Orden.Orden;
+import ramaDeposito.Camion;
+import ramaDeposito.Chofer;
 
 import java.util.ArrayList;
 
@@ -22,19 +24,18 @@ public abstract class Cliente {
 	
 	
 	//Metodos
-	public Orden getOrden() {
-		return this.orden;
-	}
-	
 	public void recibirMail(Mail mail) {
 		this.buzon.add(mail);
 	}
 	
-	public abstract Chofer informarChoferDesignado(); //TODO: falta implementar chofer por Victor.
+	public abstract Chofer informarChoferDesignado(); 
+	public abstract Camion informarCamionDesignado(); 
 	
-	public abstract Camion informarCamionDesignado(); //TODO: falta implementar camion por Victor.
 	
-	
+	//Getter and setter
+	public Orden getOrden() {
+		return this.orden;
+	}
 	
 	
 	
