@@ -33,16 +33,18 @@ public class Consignee extends Cliente {
 	//Metodos
 	@Override
 	public Chofer informarChoferDesignado() {
-		// TODO: Implementar. ¿Obtiene el chofer de la orden de importacion?
-		// orden.getChofer()
-		return null;
+		// PRECONDICION: No llamar este metodo antes de haber seteado 
+		// el valor Chofer en la ordeImportacion correspondiente
+		
+		return this.getOrden().getChofer();
 	}
 
 	@Override
 	public Camion informarCamionDesignado() {
-		// TODO: Implementar. ¿Obtiene el camion de la orden de importacion?
-		//orden.getCamion();
-		return null;
+		// PRECONDICION: No llamar este metodo antes de haber seteado 
+		// el valor Camion en la ordenImportacion correspondiente
+		
+		return this.getOrden().getCamion();
 	}
 	
 	//Getters and Setters
