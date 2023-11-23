@@ -2,7 +2,6 @@
 package ramaDeposito;
 
 // Imports de Java.
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -11,18 +10,21 @@ import java.util.List;
 import ramaCliente.Orden.Orden;
 import ramaCliente.Orden.OrdenExportacion;
 import ramaCliente.Orden.OrdenImportacion;
+import ramaCliente.Servicios.AlmacenamientoExcedente;
 
 public class Deposito {
 
 	// Atributos.
 	private List<Orden> ordenesActivas = new ArrayList<Orden>();
 	private List<Container> containers = new ArrayList<Container>();
-	
+	private double costoPorDia; // Es el costo que le tengo que cobrar a un consignee por
+								// almacenamiento excedente.
 	
 	// Constructor.
-	public Deposito(List<Orden> ordenes, List<Container> carga) {
+	public Deposito(List<Orden> ordenes, List<Container> carga, double costo) {
 		this.ordenesActivas = ordenes;
 		this.containers = carga;
+		this.costoPorDia = costo;
 	}
 	
 	
@@ -113,27 +115,43 @@ public class Deposito {
 
 	private void camionLlegoDentroDeLasHorasAsignadas(Camion camion) {
 		if(!this.noPasaron24Hrs(camion)) {
-			
+			for (Orden orden : ordenesActivas) {
+				if (orden.getCamion().equals(camion)) {
+					orden.addServicio(new AlmacenamientoExcedente(this.costoPorDia, this.calcularEstadia(camion)));
+	            }
+			}
 		}
 	}
 
 
+	private double calcularEstadia(Camion camion) {
+		return(this.calcularCantDeHoras(camion) * this.costoPorDia);
+	}
+
+
+	private double calcularCantDeHoras(Camion camion) {
+		for (Orden orden : ordenesActivas) {
+			if (orden.getCamion().equals(camion)) {
+				LocalDateTime horaDeLlegadaCamion = camion.getHraDeLlegada();
+
+				if (orden instanceof OrdenImportacion) {
+					LocalDateTime horaDeLlegadaOrden = ((OrdenImportacion) orden).getfechaLlegadaDeCarga();
+					long diferenciaEnHoras = ChronoUnit.HOURS.between(horaDeLlegadaCamion, horaDeLlegadaOrden);
+					return(Math.abs(diferenciaEnHoras));
+				}
+			}
+    	}
+		return(Math.abs(diferenciaEnHoras));
+		//return costoPorDia;
+	}
+	
 	private boolean noPasaron24Hrs(Camion camion) {
-	    for (Orden orden : ordenesActivas) {
-	        if (orden.getCamion().equals(camion)) {
-	            LocalDateTime horaDeLlegadaCamion = camion.getHraDeLlegada();
-
-	            if (orden instanceof OrdenImportacion) {
-	                LocalDateTime horaDeLlegadaOrden = ((OrdenImportacion) orden).getHoraDeLlegada();
-	                long diferenciaEnHoras = ChronoUnit.HOURS.between(horaDeLlegadaCamion, horaDeLlegadaOrden);
-
-	                if (Math.abs(diferenciaEnHoras) <= 24) {
-	                    return true;
-	                }
-	            }
-	        }
-	    }
-	    return false;
+		if (this.calcularCantDeHoras(camion) <= 24) {
+			return true;
+		} else {
+			return false;
+		}
+	    
 	}
 
 

@@ -11,12 +11,14 @@ public class Camion {
 	private Chofer conductor;
 	private LocalDateTime hraDeLlegada;
 	
+	
 	// Constructor.
 	public Camion(Container carga, Chofer conductor, LocalDateTime hra) {
 		this.carga = carga;
 		this.conductor = conductor;
 		this.hraDeLlegada = hra;
 	}
+	
 	
 	// Metodos.
 		// Getters.
