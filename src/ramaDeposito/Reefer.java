@@ -23,5 +23,9 @@ public class Reefer extends Container{
 		return(this.consumo);
 	}
 	
+	public double calcularConsumo(double tiempo) {
+		return(this.consumo * tiempo);
+	}
+	
 
 }
