@@ -36,7 +36,7 @@ public class Deposito {
 		// Se encarga del accionar cuando un camion
 		// de un Shipper (es decir, un camion con carga
 		// a exportar) llega al deposito.
-	public void registrarCargaEnElPuerto(Camion camion) {
+	public void registrarCargaEnElPuerto(Camion camion) throws Exception {
 		this.clienteInformóChoferYCamion(camion);
 		this.camionLlegaConElContainerALaHoraCorrecta(camion);
 		this.containers.add(camion.descargar());
@@ -55,8 +55,6 @@ public class Deposito {
 	}
 
 	private boolean esLaMismaHoraDeLlegada(Camion camion) {
-		Duration duracion = Duration.between(null, null);
-		
 		return(
 				true
 		);
@@ -90,7 +88,7 @@ public class Deposito {
 		// Se encarga del accionar cuando un camion
 		// de un Consignee (es decir, un camion sin carga
 		// que viene a retirar una) llega al deposito.
-	public void cargarCamion(Camion camion) {
+	public void cargarCamion(Camion camion) throws Exception {
 		this.clienteInformóChoferYCamion(camion);
 		camion.cargar(this.containerCorrespondiente(camion));
 	}
