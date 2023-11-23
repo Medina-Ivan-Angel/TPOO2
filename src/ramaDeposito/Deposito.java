@@ -1,12 +1,16 @@
 // Package de la clase.
 package ramaDeposito;
 
+// Imports de Java.
 import java.time.Duration;
-//Imports.
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+// Import de clases del Tp.
 import ramaCliente.Orden.Orden;
 import ramaCliente.Orden.OrdenExportacion;
+import ramaCliente.Orden.OrdenImportacion;
 
 public class Deposito {
 
@@ -55,9 +59,21 @@ public class Deposito {
 	}
 
 	private boolean esLaMismaHoraDeLlegada(Camion camion) {
-		return(
-				true
-		);
+	    for (Orden orden : ordenesActivas) {
+	        if (orden.getCamion().equals(camion)) {
+	            LocalDateTime horaDeLlegadaCamion = camion.getHraDeLlegada();
+
+	            if (orden instanceof OrdenExportacion) {
+	                LocalDateTime horaDeLlegadaOrden = ((OrdenExportacion) orden).getFechaSalidaDeCarga();
+	                long diferenciaEnHoras = ChronoUnit.HOURS.between(horaDeLlegadaCamion, horaDeLlegadaOrden);
+
+	                if (Math.abs(diferenciaEnHoras) <= 3) {
+	                    return(true);
+	                }
+	            }
+	        }
+	    }
+	    return(false);
 	}
 
 	
@@ -90,7 +106,34 @@ public class Deposito {
 		// que viene a retirar una) llega al deposito.
 	public void cargarCamion(Camion camion) throws Exception {
 		this.clienteInformóChoferYCamion(camion);
+		this.camionLlegoDentroDeLasHorasAsignadas(camion);
 		camion.cargar(this.containerCorrespondiente(camion));
+	}
+
+
+	private void camionLlegoDentroDeLasHorasAsignadas(Camion camion) {
+		if(!this.noPasaron24Hrs(camion)) {
+			
+		}
+	}
+
+
+	private boolean noPasaron24Hrs(Camion camion) {
+	    for (Orden orden : ordenesActivas) {
+	        if (orden.getCamion().equals(camion)) {
+	            LocalDateTime horaDeLlegadaCamion = camion.getHraDeLlegada();
+
+	            if (orden instanceof OrdenImportacion) {
+	                LocalDateTime horaDeLlegadaOrden = ((OrdenImportacion) orden).getHoraDeLlegada();
+	                long diferenciaEnHoras = ChronoUnit.HOURS.between(horaDeLlegadaCamion, horaDeLlegadaOrden);
+
+	                if (Math.abs(diferenciaEnHoras) <= 24) {
+	                    return true;
+	                }
+	            }
+	        }
+	    }
+	    return false;
 	}
 
 
