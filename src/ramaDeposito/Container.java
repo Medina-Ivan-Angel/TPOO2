@@ -9,12 +9,22 @@ public abstract class Container {
 	protected double largo;
 	protected double pesoTotal;
 	
-	
 	// Metodos.
 		// Getter.
 	public double getPeso() {
 		return(this.pesoTotal);
 	}
 	
+	public double getAncho() {
+		return(this.ancho);
+	}
+	
+	public double getAltura() {
+		return(this.altura);
+	}
+	
+	public double getLargo(){
+		return(this.largo);
+	}
 	
 }
