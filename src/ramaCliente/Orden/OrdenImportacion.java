@@ -10,7 +10,7 @@ public class OrdenImportacion extends Orden {
 	
 	/*
 	 *  Esta Orden De Importacion es asignada
-	 *  al Consignee correspondiente. Los atributos "Camion" y "Chofer"
+	 *  al Consignee correspondiente. Los atributos "Camion", "Chofer" y "fechaLlegadaDeCarga"
 	 *  deben ser configurados por fuera del constructor (setters).
 	 */
 	
@@ -41,7 +41,9 @@ public class OrdenImportacion extends Orden {
 	}
 		
 	
-	
+	public LocalDateTime getfechaLlegadaDeCarga() {
+		return this.fechaLlegadaDeCarga;
+	}
 	
 	
 	
