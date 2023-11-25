@@ -20,7 +20,7 @@ public class EmpresaDeTransporte {
 	
 	
 	// Metodos.
-		// Agregar Empleados y camiones.
+		/* Agregar Empleados y camiones.*/
 	public void addEmpleados(Chofer chofer) {
 		this.empleados.add(chofer);
 	}
@@ -29,5 +29,12 @@ public class EmpresaDeTransporte {
 		this.flotaDeCamiones.add(camion);
 	}
 	
+	public List<Camion> getCamiones() {
+		return(this.flotaDeCamiones);
+	}
+	
+	public List<Chofer> getEmpleados() {
+		return(this.empleados);
+	}
 	
 }
