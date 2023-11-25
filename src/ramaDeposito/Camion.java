@@ -19,6 +19,12 @@ public class Camion {
 		this.hraDeLlegada = hra;
 	}
 	
+	public Camion(Chofer conductor, LocalDateTime hra) {
+		this.carga = null;
+		this.conductor = conductor;
+		this.hraDeLlegada = hra;
+	}
+	
 	
 	// Metodos.
 		// Getters.
@@ -31,8 +37,9 @@ public class Camion {
 	}
 	
 		/*
-		 * Metodo para cuando se confirma que es el camion
-		 * correcto para descargarlo.
+		 * Corrobora si tiene una carga, y en caso 
+		 * de ser asi la devuelve y deja vacio su
+		 * atributo de carga.
 		*/
 	public Container descargar() throws Exception {
         this.validarQueTieneCarga();
