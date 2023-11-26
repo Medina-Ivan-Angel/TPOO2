@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import Terminal.TerminalNormal;
 import ramaCliente.Cliente;
+import ramaCliente.Shipper;
 import ramaDeposito.Camion;
 import ramaDeposito.Chofer;
 import ramaDeposito.Container;
@@ -26,7 +27,7 @@ public class OrdenExportacion extends Orden {
 	public OrdenExportacion(TerminalNormal destino,
 							LocalDateTime fechaSalidaDeCarga,
 							LocalDateTime fechaLlegadaADestino,
-							Cliente cliente,
+							Shipper cliente,
 							Container carga,
 							Camion camion,
 							Chofer chofer) {

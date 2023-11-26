@@ -1,9 +1,14 @@
 package ramaCliente.Orden;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.Test;
 
 import Terminal.TerminalNormal;
 import ramaCliente.Cliente;
+import ramaCliente.Consignee;
 import ramaDeposito.Container;
 import ramaFasesDelBuque.Buque;
 
@@ -21,7 +26,7 @@ public class OrdenImportacion extends Orden {
 	private Buque buque; 						
 	
 	//Constructor
-	public OrdenImportacion(Cliente cliente, 
+	public OrdenImportacion(Consignee cliente, 
 							Container carga,
 							TerminalNormal origen,
 							Buque buque) {
@@ -53,6 +58,7 @@ public class OrdenImportacion extends Orden {
 	public Buque getBuque() {
 		return this.buque;
 	}
+	
 	
 	
 	
