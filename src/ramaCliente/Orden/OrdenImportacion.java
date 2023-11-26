@@ -2,6 +2,7 @@ package ramaCliente.Orden;
 
 import java.time.LocalDateTime;
 
+import Terminal.TerminalNormal;
 import ramaCliente.Cliente;
 import ramaDeposito.Container;
 import ramaFasesDelBuque.Buque;
@@ -15,14 +16,14 @@ public class OrdenImportacion extends Orden {
 	 */
 	
 	//Atributos
-	private TerminalPortuaria origen;			// Desde donde viene la carga
+	private TerminalNormal origen;				// Desde donde viene la carga
 	private LocalDateTime fechaLlegadaDeCarga;	// Cuando (fecha) llega la carga
 	private Buque buque; 						
 	
 	//Constructor
 	public OrdenImportacion(Cliente cliente, 
 							Container carga,
-							TerminalPortuaria origen,
+							TerminalNormal origen,
 							Buque buque) {
 		
 		super(cliente, carga);
@@ -43,6 +44,14 @@ public class OrdenImportacion extends Orden {
 	
 	public LocalDateTime getfechaLlegadaDeCarga() {
 		return this.fechaLlegadaDeCarga;
+	}
+
+	public TerminalNormal getOrigen() {
+		return this.origen;
+	}
+
+	public Buque getBuque() {
+		return this.buque;
 	}
 	
 	

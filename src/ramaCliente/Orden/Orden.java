@@ -12,7 +12,7 @@ import ramaDeposito.Container;
 public abstract class Orden {
 
 	//Atributos
-	List<Servicio> servicios = new ArrayList<Servicio>(); //Servicios aplicados a la carga
+	private List<Servicio> servicios = new ArrayList<Servicio>(); //Servicios aplicados a la carga
 	private Cliente cliente;
 	private Container carga;
 	private Camion camion;

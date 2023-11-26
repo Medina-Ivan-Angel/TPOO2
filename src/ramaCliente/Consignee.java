@@ -2,6 +2,7 @@ package ramaCliente;
 
 import java.time.LocalDateTime;
 
+import Terminal.TerminalNormal;
 import ramaAuxiliar.MailFecha;
 import ramaCliente.Orden.OrdenImportacion;
 import ramaDeposito.Camion;
@@ -21,7 +22,7 @@ public class Consignee extends Cliente {
 	//Atributos
 	//TODO: Hace falta esto? La orden de importacion ya lo tiene.
 	//OBS: Puede que deba conocerlo de antemano para elegir la mejor ruta/viaje en la terminal
-	private TerminalPortuaria origen; 
+	//private TerminalNormal origen; 
 	
 	
 	
@@ -48,15 +49,15 @@ public class Consignee extends Cliente {
 	}
 	
 	//Getters and Setters
-	
-	//TODO: Es esto necesario? La orden de importacion ya lo tiene.
-	public TerminalPortuaria getOrigen() {
-		return this.origen;
-	}
+	/*
+	//TODO: Este atributo no deberia poder ser cambiado?
+	public void setOrigen(TerminalNormal terminalOrigen) {
+		this.origen = terminalOrigen;
+	}*/
 	
 	public LocalDateTime getFechaYHoraDeLlegada(){
 		
-		return this.buzon.stream()									 // Buzon de la superclase Cliente
+		return this.getBuzon().stream()								 // Buzon de la superclase Cliente
                 		 .filter(mail -> mail instanceof MailFecha)  // obtenemos los mails que sean MailFecha 
                 		 .map(mail -> ((MailFecha) mail).getFecha()) // obtenemos el atributo fecha de dicho mail
                 		 .findFirst() 								 // Nos quedamos con la primera fecha encontrada (teoricamente deberia haber solo 1)
