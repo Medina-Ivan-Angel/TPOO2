@@ -15,7 +15,7 @@ public abstract class Cliente {
 	//Atributos
 	private Orden orden; //Orden de importacion/exportacion del cliente.
 	
-	List<Mail> buzon = new ArrayList<Mail>(); //buzon donde se almacenan los mails 
+	private List<Mail> buzon = new ArrayList<Mail>(); //buzon donde se almacenan los mails 
 	
 	//CONSTRUCTOR 
 	public Cliente(Orden orden) {
@@ -37,6 +37,9 @@ public abstract class Cliente {
 		return this.orden;
 	}
 	
+	public List<Mail> getBuzon(){
+		return this.buzon;
+	}
 	
 	
 	

@@ -1,5 +1,6 @@
 package ramaCliente;
 
+import Terminal.TerminalNormal;
 import ramaCliente.Orden.OrdenExportacion;
 import ramaDeposito.Camion;
 import ramaDeposito.Chofer;
@@ -16,7 +17,7 @@ public class Shipper extends Cliente {
 	//Atributos
 	//TODO: Implementar Terminal / terminal portuaria ¿No viene ya dado por la orden de exportacion?
 	//OBS: Puede que deba conocerlo de antemano para elegir la mejor ruta/viaje en la terminal
-	private TerminalPortuaria destino; 
+	private TerminalNormal destino; 
 	
 	
 	//CONSTRUCTOR
@@ -40,7 +41,7 @@ public class Shipper extends Cliente {
 	//Getters and setters
 
 	//TODO: Hace falta este metodo? La orden de Exportacion ya lo tiene.
-	public TerminalPortuaria getDestino() {
+	public TerminalNormal getDestino() {
 		return this.destino;
 	}
 
