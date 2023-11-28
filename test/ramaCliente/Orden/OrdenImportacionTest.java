@@ -21,8 +21,8 @@ class OrdenImportacionTest {
 	//Mocks
 	@Mock TerminalNormal terminalOrigen;
 	@Mock LocalDateTime fechaLlegadaDeCarga; // settear
-	@Mock Camion camion; // settear
-	@Mock Chofer chofer; // settear
+	@Mock Camion camion; 					 // settear
+	@Mock Chofer chofer; 					 // settear
 	@Mock Buque buque;
 	@Mock Consignee cliente;
 	@Mock Container carga;

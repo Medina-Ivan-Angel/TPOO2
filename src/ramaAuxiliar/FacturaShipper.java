@@ -29,7 +29,7 @@ public class FacturaShipper extends Factura {
 	@Override
 	public String imprimirCostoTotal() {
 		
-		return "Monto Total : " + this.costoTotalServicios() + "\n";
+		return "Monto Total : " + this.costoTotalServicios() + "$\n";
 		
 	}
 	
