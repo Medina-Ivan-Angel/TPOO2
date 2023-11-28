@@ -11,7 +11,7 @@ public abstract class Factura {
 
 	/*
 	 * Esta clase es parte del patron Template method
-	 * aqui se define el algoritmo principal y metodo hook.
+	 * aqui se define el algoritmo principal y los metodos hook.
 	 */
 	
 	//Atributos
@@ -41,7 +41,7 @@ public abstract class Factura {
 
 	public String imprimirFecha() {
 		
-		return "Fecha " + this.fecha.toString() + "\n";
+		return "Fecha: " + this.fecha.toString() + "\n";
 		
 	}
 	
@@ -57,7 +57,7 @@ public abstract class Factura {
 			* Pesado : 100$
 			* etc.
 			*/
-			salida = salida + servicio.getClass().getName() + " : " + servicio.costoTotal() + "\n";
+			salida = salida + servicio.getClass().getSimpleName() + " : " + servicio.costoTotal() + "$\n";
 			
 		}
 		

@@ -2,5 +2,5 @@ package ramaAuxiliar;
 
 public interface Mail {
 	
-	//Esta interfaz es solo par tipar
+	//Esta interfaz es solo para tipar
 }
