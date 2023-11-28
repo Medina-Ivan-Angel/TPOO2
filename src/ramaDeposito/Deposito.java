@@ -54,6 +54,9 @@ public class Deposito {
 		this.containers.add(container);
 	}
 	
+	public List<Container> getContainers() {
+		return(this.containers);
+	}
 	
 		// Se encarga del accionar cuando un camion
 		// de un Shipper (es decir, un camion con carga
@@ -71,7 +74,9 @@ public class Deposito {
 	public void cargarCamion(Camion camion) throws Exception {
 		this.clienteInformóChoferYCamion(camion); // --> Validacion.
 		this.camionLlegoDentroDeLasHorasAsignadas(camion); // --> Validacion.
-		camion.cargar(this.containerCorrespondiente(camion)); // --> Accion. (Si es que las validaciones no fallan).
+	    Container container = this.containerCorrespondiente(camion);
+	    camion.cargar(container); // --> Accion. (Si es que las validaciones no fallan).
+	    this.getContainers().remove(container); // --> Accion. (Si es que las validaciones no fallan).
 	}
 
 	
