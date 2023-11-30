@@ -1,6 +1,8 @@
 package ramaFasesDelBuque;
 
- import java.lang.Math;	
+ import java.lang.Math;
+import java.util.ArrayList;
+import java.util.List;
 
 import ramaNavieraCircuitos.Viaje;
 	
@@ -10,12 +12,14 @@ import ramaNavieraCircuitos.Viaje;
 	private Fase estado;
 	private Viaje viaje;
 	private Coordenada posicion;
+	private List<Container> containers;
 	
 	// CONSTRUCTOR:
-	public Buque(Fase estado, Viaje viaje, Coordenada posicion) {
+	public Buque(Fase estado, Viaje viaje, Coordenada posicion, Container containers) {
 		this.viaje = viaje;
 		this.estado = estado;
 		this.posicion = posicion;
+		this.containers = new ArrayList<Container>();
 	}
 	
 	// MÉTODOS:
@@ -47,16 +51,16 @@ import ramaNavieraCircuitos.Viaje;
 		 
 		   int coordenadaBuqueX = coordenada.getValorX(); // X1
 		   int coordenadaBuqueY = coordenada.getValorY(); // Y1
-		   // Punto (X1; Y1)
+		   // Punto (X1; Y1) coordenadas del buque
 		   
 		   int coordenadaTerminalX = viaje.getTerminalDestino().getPosicion().getValorX(); // X2		   
 		   int coordenadaTerminalY = viaje.getTerminalDestino().getPosicion().getValorY(); // y2
-		   // Punto (X2; Y2)
+		   // Punto (X2; Y2) coordenadas de la terminal
 		   
 		   double distancia = Math.sqrt((Math.pow((coordenadaTerminalX - coordenadaBuqueX), 2) + Math.pow((coordenadaTerminalY - coordenadaBuqueY), 2))); 
 		   
 		    
-		 return 0;
+		 return distancia;
 		
 	}
 	
@@ -65,6 +69,12 @@ import ramaNavieraCircuitos.Viaje;
 		 para que informe a los consignees */
 	}
 	
+	public String darPostAviso() {
+		/*
+		 * TODO: enviar un mail a la terminal que le diga que el buque se está yendo.
+		 * 
+		 * */
+	}
 		
 	
 	public void setEstado(Fase nuevoEstado) {
@@ -87,5 +97,9 @@ import ramaNavieraCircuitos.Viaje;
 	
 	public Coordenada getPosicion() {
 		return this.posicion;
+	}
+	
+	public List<Container> getContainers() {
+		return this.containers;
 	}
 }
