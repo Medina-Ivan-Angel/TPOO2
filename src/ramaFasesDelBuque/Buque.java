@@ -46,8 +46,8 @@ import ramaNavieraCircuitos.Viaje;
 		   int coordenadaBuqueX = coordenada.getValorX();
 		   int coordenadaBuqueY = coordenada.getValorY();
 		   
-		   int coordenadaTerminalX = viaje.getTerminalDestino();		   
-		   int coordenadaTerminalY = viaje.getTerminalDestino();
+		   int coordenadaTerminalX = viaje.getTerminalDestino().getPosicion();		   
+		   int coordenadaTerminalY = viaje.getTerminalDestino().getPosicion();
 		   
 		    
 		 return 0;
