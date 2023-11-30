@@ -29,8 +29,7 @@ import ramaNavieraCircuitos.Viaje;
 		
 		/*
 		 * 
-		 * double coordenadaX = coordenada.getValorX();
-		   double coordenadaY = coordenada.getValorY(); 
+		 
 		  
 		   voy a utilizar la formula de distancia entre puntos de una funcion lineal, 
 		   tomamos a la terminal gestionada como el origen, el punto (0,0) 
@@ -44,6 +43,13 @@ import ramaNavieraCircuitos.Viaje;
 		   
 		 * */
 		 
+		   int coordenadaBuqueX = coordenada.getValorX();
+		   int coordenadaBuqueY = coordenada.getValorY();
+		   
+		   int coordenadaTerminalX = viaje.getTerminalDestino();		   
+		   int coordenadaTerminalY = viaje.getTerminalDestino();
+		   
+		    
 		 return 0;
 		
 	}
