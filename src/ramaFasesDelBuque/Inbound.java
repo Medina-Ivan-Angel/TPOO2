@@ -1,18 +1,21 @@
 package ramaFasesDelBuque;
 
 public class Inbound implements Fase {
-
-	private Fase proximoEstado = new Arrived();
 	
 	/*
-	 * hace tal cual la consigna, acá dice menor, asique pongo menor estricto, 
-	 * el mayor o igual lo dejé para el outbound. 
-	 * en todas estas fases hay que ver que efectivamente el buque cambie 
-	 * adecuadamente de fase en la rama del else.
-	 * 
-	 * */
+	 * En esta Fase, el buque se encuentra a menos de 50 KM de la terminal de destino, 
+	 * cuando entra en esta fase, da aviso a la terminal de su inminente arrivo. 
+	 */
+	
+	// ATRIBUTOS:
+	
+	private Fase proximoEstado = new Arrived();
+	
+	// CONSTRUCTOR:
 	
 	public Inbound() {}
+	
+	// MÉTODOS:
 	
 	@Override
 	public void accion(Buque buque) {
@@ -20,6 +23,7 @@ public class Inbound implements Fase {
 		if (elBuqueArrivo(buque)) {
 			buque.setEstado(this.proximoEstado);
 		}
+	}
 		
 	public boolean elBuqueArrivo(Buque buque) {
 		

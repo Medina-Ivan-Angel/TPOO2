@@ -1,9 +1,30 @@
 package ramaFasesDelBuque;
 
-public class Arrived implements Fases {
+public class Arrived implements Fase {
+	
+	/*
+	 * Esta Fase indica que el buque llegó a la terminal, se entra en esta fase
+	 * cuando las coordenadas del buque y la terminal son las mismas.
+	 * */
 
+	// ATRIBUTOS:
+	private Fase proximoEstado = new Working();
+	
+	// CONSTRUCTOR:
+	
 	public Arrived() {}
 	
+	// MÉTODOS:
+	
+	@Override 
+	public void accion(Buque buque) {
+		Coordenada coordenadaBuque = new Coordenada(4, 5);
+		if (buque.calcularDistancia(coordenadaBuque) == 0) {
+			recibeSeñalDeTerminalEiniciaCargaYDescarga(); // TODO: BUSCAR METODO EN CODIGO DE IVAN
+			buque.setEstado(this.proximoEstado);
+		}
+	}
+}
 	
 	/*
 	 * No sé como modelar el hecho de que el buque reciba una señal, puede ser 
@@ -16,13 +37,4 @@ public class Arrived implements Fases {
 	 * sería igual a cero (0).
 	 * 
 	 * */
-	
-	@Override 
-	public void accion(buque Buque) {
-		if (coordenadasDelBuqueYLaTerminalCoinciden()) {
-			return recibeSeñalDeTerminalEiniciaCargaYDescarga();
-		} else {
-			return buque.setEstado(Working);
-	}
 
-}
