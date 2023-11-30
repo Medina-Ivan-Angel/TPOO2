@@ -1,5 +1,7 @@
 package ramaFasesDelBuque;
 
+ import java.lang.Math;	
+
 import ramaNavieraCircuitos.Viaje;
 	
 	public class Buque {
@@ -23,7 +25,7 @@ import ramaNavieraCircuitos.Viaje;
 	 * calcular la distancia entre 2 puntos en el plano, el primer punto 
 	 * es una instancia del buque, y el otro punto es la terminal de destino
 	 * */
-	public int calcularDistancia(Coordenada coordenada) {
+	public double calcularDistancia(Coordenada coordenada) {
 	
 		// TODO: lo trato de implementar más adelante a medida que voy avanzando
 		
@@ -43,11 +45,15 @@ import ramaNavieraCircuitos.Viaje;
 		   
 		 * */
 		 
-		   int coordenadaBuqueX = coordenada.getValorX();
-		   int coordenadaBuqueY = coordenada.getValorY();
+		   int coordenadaBuqueX = coordenada.getValorX(); // X1
+		   int coordenadaBuqueY = coordenada.getValorY(); // Y1
+		   // Punto (X1; Y1)
 		   
-		   int coordenadaTerminalX = viaje.getTerminalDestino().getPosicion();		   
-		   int coordenadaTerminalY = viaje.getTerminalDestino().getPosicion();
+		   int coordenadaTerminalX = viaje.getTerminalDestino().getPosicion().getValorX(); // X2		   
+		   int coordenadaTerminalY = viaje.getTerminalDestino().getPosicion().getValorY(); // y2
+		   // Punto (X2; Y2)
+		   
+		   double distancia = Math.sqrt((Math.pow((coordenadaTerminalX - coordenadaBuqueX), 2) + Math.pow((coordenadaTerminalY - coordenadaBuqueY), 2))); 
 		   
 		    
 		 return 0;
