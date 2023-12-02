@@ -20,13 +20,7 @@ public class Working implements Fase {
 	 
 	@Override
 	public void accion(Buque buque) {
-		if (finalizóElTrabajo(buque)) {
-			return buque.setEstado(this.proximoEstado);
-		}
+		buque.setEstado(this.proximoEstado);
 	}
 		
-	public boolean finalizóElTrabajo(Buque buque) {
-		return buque.getContainers().size() == 0;
-	}
-
 }

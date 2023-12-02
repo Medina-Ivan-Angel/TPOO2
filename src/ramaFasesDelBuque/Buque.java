@@ -1,9 +1,9 @@
 package ramaFasesDelBuque;
 
- import java.lang.Math;
+import java.lang.Math;
 import java.util.ArrayList;
 import java.util.List;
-
+import ramaDeposito.Container;
 import ramaNavieraCircuitos.Viaje;
 	
 	public class Buque {
@@ -64,16 +64,19 @@ import ramaNavieraCircuitos.Viaje;
 		
 	}
 	
-	public String darPreaviso() {
+	public void darPreaviso() {
 		/* TODO: enviar un mail de preaviso con un buque a la Terminal 
 		 para que informe a los consignees */
+		 
+		 this.viaje.getTerminalDestino().recibirPreaviso(this);
 	}
 	
-	public String darPostAviso() {
+	public void darPostAviso() {
 		/*
 		 * TODO: enviar un mail a la terminal que le diga que el buque se está yendo.
 		 * 
 		 * */
+		 this.viaje.getTerminalDestino().recibirPostAviso(this);
 	}
 		
 	
@@ -88,6 +91,15 @@ import ramaNavieraCircuitos.Viaje;
 		this.estado.accion(this);
 		
 	}
+	
+	// Esto lo envía como orden de salida la terminal.
+	public void depart() {
+		this.estado.accion(this);
+	}
+	
+	 // El proceso de carga y descarga no será contemplado.
+	 
+	public void iniciarCargaYDescarga() {} 
 		
 	// GETTERS AND SETTERS:
 	
@@ -102,4 +114,6 @@ import ramaNavieraCircuitos.Viaje;
 	public List<Container> getContainers() {
 		return this.containers;
 	}
+
+	
 }

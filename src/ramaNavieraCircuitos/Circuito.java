@@ -2,15 +2,12 @@ package ramaNavieraCircuitos;
 import java.util.List;
 import java.util.ArrayList;
 
-import ramaFasesDelBuque.*;
-
-
 public class Circuito {
 	
 	private List<Tramo> tramos;
 	
 	public Circuito(List<Tramo> tramos) {
-		this.tramos = tramos;
+		this.tramos = new ArrayList<Tramo>();
 	}
 	
 	/*
