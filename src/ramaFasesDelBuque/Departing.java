@@ -2,23 +2,29 @@ package ramaFasesDelBuque;
 
 public class Departing implements Fase {
 
-	public Departing() {}
-	
-	
 	/*
-	 * En esta funcion, cuando el buque se aleja a mas de 1 km de la terminal 
-	 * cuando se vá, enseguida le notifica a la terminal, no sé si esa notificación
-	 * tiene que ser un nuevo metodo para el buque, o si puedo repetir de nuevo 
-	 * el metodo darPreaviso(). Además, en seguida tiene que cambiar de fase, 
-	 * por eso hice los 2 en el mismo bloque de código.
+	 * En esta Fase el buque se encuentra saliendo de la terminal,
+	 * cuando su distancia con respecto a la terminal es mayor a 
+	 * 1 KM, le avisa a la terminal, y luego, el buque pasa
+	 * nuevamente a la Fase inicial de Outbound.
 	 * */
+	
+	// ATRIBUTOS:
+	
+	private Fase proximoEstado = new Outbound();
+
+	// CONSTRUCTOR:
+	
+	public Departing() {}
+		
+	// MÉTODOS:
 	
 	@Override
 	public void accion(Buque buque) {
-		if (distanciaDelBuqueALaTerminal > 1) {
-			 buque.darPreaviso();
- 			 return buque.setEstado(Outbound);
-		}			
-			
-
+		Coordenada coordenadaBuque = new Coordenada(4, 5);
+		if (buque.calcularDistancia(coordenadaBuque) > 1) {
+			 buque.darPostAviso();
+ 			 buque.setEstado(this.proximoEstado);
+		}
+	}				
 }

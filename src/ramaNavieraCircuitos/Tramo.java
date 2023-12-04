@@ -1,14 +1,16 @@
 package ramaNavieraCircuitos;
 
+import Terminal.TerminalNormal;
+
 public class Tramo {
 
-	private Terminal origen;
-	private Terminal destino;
+	private TerminalNormal origen;
+	private TerminalNormal destino;
 	private double distanciaEntrePuertos; 
-	private LocalTime duracionDelTramo;
+	private double duracionDelTramo;
 	private double costoDelTramo;
 
-	public Tramo(Terminal origen, Terminal destino, double distanciaEntrePuertos, LocalTime duracionDelTramo, 
+	public Tramo(TerminalNormal origen, TerminalNormal destino, double distanciaEntrePuertos, double duracionDelTramo, 
 				 double costoDelTramo) {
 		this.origen = origen;
 		this.destino = destino;
@@ -29,11 +31,11 @@ public class Tramo {
 		return this.costoDelTramo;
 	}
 
-	public Terminal getOrigen() {
+	public TerminalNormal getOrigen() {
 		return origen;
 	}
 
-	public Terminal getDestino() {
+	public TerminalNormal getDestino() {
 		return destino;
 	}
 
@@ -41,9 +43,8 @@ public class Tramo {
 		return distanciaEntrePuertos;
 	}
 
-	public LocalTime getDuracionDelTramo() {
+	public double getDuracionDelTramo() {
 		return duracionDelTramo;
 	}
 	
-
 }

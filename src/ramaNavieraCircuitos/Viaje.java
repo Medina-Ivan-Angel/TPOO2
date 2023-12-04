@@ -3,15 +3,17 @@ package ramaNavieraCircuitos;
 import java.time.LocalDate;
 import java.util.List;
 
+import Terminal.TerminalNormal;
+
 public class Viaje {
 	
 	private LocalDate fechaDeSalida;
 	private Circuito circuitoARecorrer;
-	private Terminal terminalDestino;
+	private TerminalNormal terminalDestino;
 	
 	
 	public Viaje(LocalDate fechaDeSalida, Circuito circuitoARecorrer, 
-			     Terminal terminalDestino) {
+			     TerminalNormal terminalDestino) {
 			     
 		this.fechaDeSalida = fechaDeSalida;
 		this.circuitoARecorrer = circuitoARecorrer;
@@ -27,7 +29,7 @@ public class Viaje {
 	 * */
 	public double costoDelViaje() {
 	
-		List<Tramo> tramos = Circuito.getTramos();
+		List<Tramo> tramos = circuitoARecorrer.getTramos();
 		
 		return tramos.stream()
 					 .mapToDouble(Tramo::getCostoDelTramo)
@@ -36,8 +38,14 @@ public class Viaje {
 	
 	// GETTERS Y SETTERS:
 	
-	public Terminal getTerminalDestino() {
+	public TerminalNormal getTerminalDestino() {
 		return this.terminalDestino;
+	}
+	
+	public LocalDate getFechaDeSalida() {
+	
+		return this.fechaDeSalida;
+			
 	}
 	
 
