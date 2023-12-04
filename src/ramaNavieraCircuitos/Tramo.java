@@ -25,11 +25,6 @@ public class Tramo {
 	 * Los setters no se generaron porque las instancias de Tramo se crean, y se 
 	 * les asignan valores constantes.
 	 * */
-	
-	public double getCostoDelTramo() {
-	
-		return this.costoDelTramo;
-	}
 
 	public TerminalNormal getOrigen() {
 		return origen;
@@ -37,6 +32,11 @@ public class Tramo {
 
 	public TerminalNormal getDestino() {
 		return destino;
+	}
+	
+	public double getCostoDelTramo() {
+	
+		return this.costoDelTramo;
 	}
 
 	public double getDistanciaEntrePuertos() {
