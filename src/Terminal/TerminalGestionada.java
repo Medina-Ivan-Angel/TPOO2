@@ -13,11 +13,13 @@ import java.util.Objects;
 
 
 import ramaAuxiliar.Mail;
+import ramaAuxiliar.MailFecha;
+
 import ramaCliente.Cliente;
 import ramaCliente.Consignee;
 import ramaCliente.Shipper;
-
-
+import ramaCliente.Orden.OrdenImportacion;
+import ramaDeposito.Container;
 import ramaDeposito.Deposito;
 import ramaDeposito.EmpresaDeTransporte;
 
@@ -63,20 +65,26 @@ public class TerminalGestionada extends TerminalNormal{
 	
 	public void exportacion(Shipper shipper) {
 		
-		/*
-		 * (Se debe generar la orden de importacion en dos fases 1-instanciar 2-setear fechaLlegada, camion y chofer)
-			1) Enviar MailFecha al consignee indicando fecha y hora de llegada de su carga. (Margen de retiro de carga: 24 hs con respecto a dicha fecha y hora)
-			2) Al recibir el MailFecha el consignee informa a la terminal el camion y chofer que retirará su carga.
-
-		 */
+		
 		
 		
 		
 	}
 	
 	public void importacion(Consignee consignee) {
+		/*
+		 * El consignee se debe instanciar con una orden de importacion predefinida
+		 * porque se asume que todo el tramite previo de importacion ya se realizo
+		 * previamente por lo que ya tiene su propia orden de importacion.
+		 */
 		
+		//Generamos el mail con la fecha de llegada del buque del Consignee
+		MailFecha mailFecha = new MailFecha(consignee.getOrden().getfechaLlegadaDeCarga());
 		
+		//Informamos al consignee sobre la llegada del buque
+		this.enviarMailA(consignee, mailFecha);
+		
+		this.deposito.addOrdenImportacion(consignee.getOrden()); //Se informo del chofer y el camion en este paso
 		
 	}
 	
@@ -94,16 +102,7 @@ public class TerminalGestionada extends TerminalNormal{
 	
 	public LocalDateTime proximaFechaDePartidaA(TerminalNormal destino) {
 		// devuelve la proxima fecha de partida de un buque desde TerminalGestionada hasta destino.
-		// navieras..flota..buque...viajeDelBuque...destino.
-		
-		/*return this.navieras.stream().map(naviera -> naviera.getFlota()) //Stream<List<Buque>>
-							  .flatMap(List::stream)  			  // Aplanar el Stream<List<Buque>> a un Stream<Buque>
-							  .map(buque -> buque.getViaje())     //Stream<viaje>
-							  .filter(viaje -> viaje.getDestino().equals(destino)) //Stream de viajes cuyo destino == destino
-							  .filter(viaje -> viaje.getFechaDeSalida()) //Stream de fechas de salida de cada viaje
-							  .findFirst();
-		*/
-		
+
 		return this.navieras.stream()
 	            .map(naviera -> naviera.getFlota())    // Stream<List<Buque>>
 	            .flatMap(List::stream)                  // Aplanar el Stream<List<Buque>> a un Stream<Buque>
@@ -118,7 +117,7 @@ public class TerminalGestionada extends TerminalNormal{
 		
 	}
 	
-	
+
 	
 	//Getters and Setters
 
