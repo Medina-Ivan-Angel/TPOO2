@@ -3,6 +3,8 @@ package ramaFasesDelBuque;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.List;
+
+import Terminal.TerminalNormal;
 import ramaDeposito.Container;
 import ramaNavieraCircuitos.Viaje;
 	
@@ -13,13 +15,17 @@ import ramaNavieraCircuitos.Viaje;
 	private Viaje viaje;
 	private Coordenada posicion;
 	private List<Container> containers;
+	private TerminalNormal terminalGestionada;
 	
 	// CONSTRUCTOR:
-	public Buque(Fase estado, Viaje viaje, Coordenada posicion, Container containers) {
+	public Buque(Fase estado, Viaje viaje, Coordenada posicion,
+				 List<Container> containers, TerminalNormal terminalGestionada) {
+				 
 		this.viaje = viaje;
 		this.estado = estado;
 		this.posicion = posicion;
-		this.containers = new ArrayList<Container>();
+		this.containers = containers;
+		this.terminalGestionada = terminalGestionada;
 	}
 	
 	// MÉTODOS:
@@ -30,34 +36,16 @@ import ramaNavieraCircuitos.Viaje;
 	 * es una instancia del buque, y el otro punto es la terminal de destino
 	 * */
 	public double calcularDistancia(Coordenada coordenada) {
-	
-		// TODO: lo trato de implementar más adelante a medida que voy avanzando
-		
-		/*
-		 * 
 		 
-		  
-		   voy a utilizar la formula de distancia entre puntos de una funcion lineal, 
-		   tomamos a la terminal gestionada como el origen, el punto (0,0) 
-		   del eje cartesiano, despues, el buque se va a mover según nosotros 
-		   necesitemos, según el estado actual del mismo, y finalmente, 
-		   voy a calcular la distancia entre el punto A que es el Buque una vez que 
-		   zarpó, y la terminal Destino, qu sería el punto B, y listo. 
-		   además después vamos a agregar el metodo al buque para setearle las 
-		   coordenadas que precisemos.
-		   ahora mergeo
-		   
-		 * */
-		 
-		   int coordenadaBuqueX = coordenada.getValorX(); // X1
-		   int coordenadaBuqueY = coordenada.getValorY(); // Y1
+		   int coordenadaBuqueX = this.posicion.getValorX(); // X1
+		   int coordenadaBuqueY = this.posicion.getValorY(); // Y1
 		   // Punto (X1; Y1) coordenadas del buque
 		   
-		   int coordenadaTerminalX = viaje.getTerminalDestino().getPosicion().getValorX(); // X2		   
-		   int coordenadaTerminalY = viaje.getTerminalDestino().getPosicion().getValorY(); // y2
-		   // Punto (X2; Y2) coordenadas de la terminal
+		   int coordenadaDestinoX = coordenada.getValorX(); // X2		   
+		   int coordenadaDestinoY = coordenada.getValorY(); // y2
+		   // Punto (X2; Y2) coordenadas del destino del buque
 		   
-		   double distancia = Math.sqrt((Math.pow((coordenadaTerminalX - coordenadaBuqueX), 2) + Math.pow((coordenadaTerminalY - coordenadaBuqueY), 2))); 
+		   double distancia = Math.sqrt((Math.pow((coordenadaDestinoX - coordenadaBuqueX), 2) + Math.pow((coordenadaDestinoY - coordenadaBuqueY), 2))); 
 		   
 		    
 		 return distancia;
@@ -78,15 +66,8 @@ import ramaNavieraCircuitos.Viaje;
 		 * */
 		 this.viaje.getTerminalDestino().recibirPostAviso(this);
 	}
-		
-	
-	public void setEstado(Fase nuevoEstado) {
-		this.estado = nuevoEstado;
-	}
 	
 	public void estadoActual() {
-	
-		// TODO: ver que hacer acá, y ver de agregar el metodo para setearle cualquier coordenada al buque
 	
 		this.estado.accion(this);
 		
@@ -111,8 +92,24 @@ import ramaNavieraCircuitos.Viaje;
 		return this.posicion;
 	}
 	
+	public void setPosicion(Coordenada posicion) {
+		this.posicion = posicion;
+	}
+	
 	public List<Container> getContainers() {
 		return this.containers;
+	}
+
+	public Fase getEstado() {
+		return this.estado;
+	}
+	
+	public void setEstado(Fase nuevoEstado) {
+		this.estado = nuevoEstado;
+	}
+	
+	public TerminalNormal getTerminalGestionada() {
+		return this.terminalGestionada;
 	}
 
 	
