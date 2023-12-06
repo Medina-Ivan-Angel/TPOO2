@@ -9,18 +9,15 @@ public class Working implements Fase {
 	 * */
 	
 	// ATRIBUTOS:
-	
 	private Fase proximoEstado = new Departing();
-	
-	// CONSTRUCTOR:
-	
-	public Working() {}
 	 
 	 // MÉTODOS:
 	 
 	@Override
 	public void accion(Buque buque) {
+	
 		buque.setEstado(this.proximoEstado);
+		
 	}
 		
 }
