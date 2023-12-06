@@ -24,8 +24,7 @@ public class OrdenImportacion extends Orden {
 	//Atributos
 	private TerminalNormal origen;				// Desde donde viene la carga
 	private LocalDateTime fechaLlegadaDeCarga;	// Cuando (fecha) llega la carga
-	private Buque buque; 						
-	
+
 	//Constructor
 	public OrdenImportacion(Consignee cliente, 
 							Container carga,
@@ -33,9 +32,8 @@ public class OrdenImportacion extends Orden {
 							Buque buque, 
 							EmpresaDeTransporte empresaDeTransporte) {
 		
-		super(cliente, carga, empresaDeTransporte);
+		super(cliente, carga, empresaDeTransporte, buque);
 		this.origen = origen;
-		this.buque  = buque;
 	}
 		
 	//Metodos
@@ -56,14 +54,6 @@ public class OrdenImportacion extends Orden {
 	public TerminalNormal getOrigen() {
 		return this.origen;
 	}
-
-	public Buque getBuque() {
-		return this.buque;
-	}
-	
-	
-	
-	
 	
 	
 }
