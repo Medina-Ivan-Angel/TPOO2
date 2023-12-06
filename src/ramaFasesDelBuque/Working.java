@@ -15,7 +15,7 @@ public class Working implements Fase {
 	 
 	@Override
 	public void accion(Buque buque) {
-	
+		buque.getTerminalGestionada().depart(buque);
 		buque.setEstado(this.proximoEstado);
 		
 	}

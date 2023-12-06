@@ -10,9 +10,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-
+import ramaAuxiliar.FacturaConsignee;
+import ramaAuxiliar.FacturaShipper;
 import ramaAuxiliar.Mail;
+import ramaAuxiliar.MailAviso;
+import ramaAuxiliar.MailFactura;
 import ramaAuxiliar.MailFecha;
 
 import ramaCliente.Cliente;
@@ -147,11 +151,90 @@ public class TerminalGestionada extends TerminalNormal{
 		
 	}
 	
+	
+	@Override
+	public void recibirPreaviso(Buque buque) {
+		
+		//Mail para enviar al consignee correspondiente.
+		MailAviso mailAviso = new MailAviso("Su carga esta llegando");
+		
+		//Buscamos los consignees involucrados y les enviamos el mail correspondiente.
+	    this.listaDeConsignees().stream()
+	    						.filter(consignee -> consignee.getOrden().getBuque().equals(buque)) //Stream de consignees que tengan al buque
+								.forEach(consignee -> consignee.recibirMail(mailAviso));
 
+		
+	}
+	
+	
+	@Override
+	public void recibirPostAviso(Buque buque) {
+		
+		/*El buque zarpa - Fin exportacion- (Fase Departing) 
+		 * Al alejarse mas de 1km envia un postAviso a la terminal 
+		 * y la terminal un MailAviso a los shippers avisando que 
+		 * su carga ya ha salido de la terminal
+		 */
+		
+		//Mail para enviar al shipper correspondiente.
+		MailAviso mailAviso = new MailAviso("Su carga ha salido de la terminal");
+	
+		//Buscamos los shippers involucrados y les enviamos el mail correspondiente.
+		this.listaDeShippers().stream()
+	    					  .filter(shipper -> shipper.getOrden().getBuque().equals(buque)) //Stream de shippers que tengan al buque
+							  .forEach(shipper -> shipper.recibirMail(mailAviso));
+		
+	}
+	
+	public List<Shipper> listaDeShippers(){
+		//Obtenemos los shippers.	
+		return clientes.stream()
+				       .filter(Shipper.class::isInstance) // filtramos las instancias de Shipper
+				       .map(Shipper.class::cast) // Convertir a List<Shipper> la lista de clientes
+				       .collect(Collectors.toList());	//Transformamos en lista
+		
+		
+	}
+	
+	public List<Consignee> listaDeConsignees(){
+		
+		return clientes.stream()
+				.filter(Consignee.class::isInstance) // filtramos las instancias de consignee
+			    .map(Consignee.class::cast) // Convertir a List<Consignee> la lista de clientes
+			    .collect(Collectors.toList());	//Transformamos en lista
+		
+	}
+	
+	
+	
+	public void enviarFacturasALosClientes(Buque buque) {
+		
+		//Buscamos los shippers involucrados y les enviamos el mail con la factura correspondiente.
+		this.listaDeShippers().stream()
+			    			  .filter(shipper -> shipper.getOrden().getBuque().equals(buque)) //Stream de shippers que tengan al buque
+							  .forEach(shipper -> shipper.recibirMail(new MailFactura(new FacturaShipper(LocalDateTime.now(), shipper)))); //Creamos el mail factura y la factura dentro del mail con la fecha actual y la enviamos al shipper
+		
+		//Buscamos los consignees involucrados y les enviamos el mail correspondiente.
+	    this.listaDeConsignees().stream()
+	    						.filter(consignee -> consignee.getOrden().getBuque().equals(buque)) //Stream de consignees que tengan al buque
+								.forEach(consignee -> consignee.recibirMail(new MailFactura(new FacturaConsignee(LocalDateTime.now(), consignee)))); // Creamos el mail factura y la factura dentro del mail con la fecha actual y la enviamos al consignee
+		
+	}
+	
+	//Esta es una señal que se envia al buque para que inicie la carga/descarga en puerto
+	public void iniciarCargaDescarga(Buque buque) {
+		buque.iniciarCargaYDescarga();
+	}
 	
 	//Getters and Setters
 	public List<Naviera> getNavieras(){
 		return this.navieras;
+	}
+
+
+	//Se envia la señal "depart" al buque al finalizar la carga/descarga para que zarpe
+	public void depart(Buque buque) {
+		buque.depart();
 	}
 	
 	

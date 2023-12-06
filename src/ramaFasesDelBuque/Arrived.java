@@ -20,7 +20,7 @@ public class Arrived implements Fase {
 	public void accion(Buque buque) {
 		Coordenada coordenadaBuque = new Coordenada(4, 5);
 		if (buque.calcularDistancia(coordenadaBuque) == 0) {
-			buque.iniciarCargaYDescarga(); 
+			buque.getTerminalGestionada().iniciarCargaDescarga(buque); //La terminal envia la señal para iniciar la carga/descarga
 			buque.setEstado(this.proximoEstado);
 		}
 	}
