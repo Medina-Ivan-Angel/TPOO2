@@ -1,5 +1,10 @@
 package ramaFasesDelBuque;
 
+import java.util.List;
+
+import Terminal.TerminalNormal;
+import ramaNavieraCircuitos.Tramo;
+
 public class Inbound implements Fase {
 	
 	/*
@@ -27,7 +32,24 @@ public class Inbound implements Fase {
 		
 	public boolean elBuqueArrivo(Buque buque) {
 		
-		return (buque.getPosicion().equals(buque.getViaje().getTerminalDestino().getPosicion()));
+		return (buque.calcularDistancia(posicionDeLaTerminalGestionadaEnLaListaDeTramosEs(buque)) == 0.0); 	
 	}
+	
+	
+	public Coordenada posicionDeLaTerminalGestionadaEnLaListaDeTramosEs(Buque buque) {
+	
+		List<Tramo> tramosDelBuque = buque.getViaje().getCircuitoARecorrer().getTramos();
+		Boolean hayTerminal = tramosDelBuque.stream()
+										    .anyMatch(tramo -> tramo.getDestino().equals(buque.getTerminalGestionada()));
+	
+		if (hayTerminal) {
 		
+        	return buque.getTerminalGestionada().getPosicion();
+        	
+    	} else {
+    		
+        	throw new RuntimeException("No se encontró la Terminal Gestionada");
+        	
+    	}		
+	}
 }

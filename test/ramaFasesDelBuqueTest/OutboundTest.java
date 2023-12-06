@@ -35,14 +35,14 @@ class OutboundTest {
 	@Test
 	void testDistanciaALaTerminalMenorA50KM() {
 	
-		assertEquals(false, outbound.distanciaALaTerminalMenorA50KM(buqueMock, terminalGestionada));
+		assertEquals(false, outbound.distanciaALaTerminalMenorA50KM(buqueMock));
 		
 	}
 	
 	@Test
 	void testTerminalGestionadaEnLaListaDeTramosEs() {
 		
-		assertEquals(terminalGestionada, outbound.terminalGestionadaEnLaListaDeTramosEs(buqueMock, terminalGestionada));
+		assertEquals(terminalGestionada, outbound.terminalGestionadaEnLaListaDeTramosEs(buqueMock));
 		
 	}
 

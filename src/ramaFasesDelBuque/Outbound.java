@@ -22,16 +22,16 @@ public class Outbound implements Fase {
 	
 	@Override
 	public void accion(Buque buque) {
-		if (distanciaALaTerminalMenorA50KM(buque, buque.getTerminalGestionada())) {
+		if (distanciaALaTerminalMenorA50KM(buque)) {
 			buque.setEstado(this.proximoEstado);
 		}
 	}
 		
-	public boolean distanciaALaTerminalMenorA50KM(Buque buque, TerminalNormal terminalGestionada) {
-		return (buque.calcularDistancia(terminalGestionadaEnLaListaDeTramosEs(buque, terminalGestionada).getPosicion()) < 50.0); 
+	public boolean distanciaALaTerminalMenorA50KM(Buque buque) {
+		return (buque.calcularDistancia(terminalGestionadaEnLaListaDeTramosEs(buque).getPosicion()) < 50.0); 
 	}
 	
-	public TerminalNormal terminalGestionadaEnLaListaDeTramosEs(Buque buque, TerminalNormal terminalGestionada) {
+	public TerminalNormal terminalGestionadaEnLaListaDeTramosEs(Buque buque) {
 	
 		/*
 		 * 1) comprobamos si existe la terminal gestionada
@@ -41,11 +41,11 @@ public class Outbound implements Fase {
 	
 		List<Tramo> tramosDelBuque = buque.getViaje().getCircuitoARecorrer().getTramos();
 		Boolean hayTerminal = tramosDelBuque.stream()
-										    .anyMatch(tramo -> tramo.getDestino().equals(terminalGestionada));
+										    .anyMatch(tramo -> tramo.getDestino().equals(buque.getTerminalGestionada()));
 	
 		if (hayTerminal) {
 		
-        	return terminalGestionada;
+        	return buque.getTerminalGestionada();
         	
     	} else {
     		
