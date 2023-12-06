@@ -11,14 +11,18 @@ public class Viaje {
 	private LocalDateTime fechaDeSalida;
 	private Circuito circuitoARecorrer;
 	private TerminalNormal terminalDestino;
+	private TerminalNormal terminalOrigen;
 	
+
+	private LocalDateTime fechaLlegadaADestino;
 	
 	public Viaje(LocalDateTime fechaDeSalida, Circuito circuitoARecorrer, 
-			     TerminalNormal terminalDestino) {
+			     TerminalNormal terminalDestino, LocalDateTime fechaLlegadaADestino) {
 			     
-		this.fechaDeSalida = fechaDeSalida;
-		this.circuitoARecorrer = circuitoARecorrer;
-		this.terminalDestino = terminalDestino;
+		this.fechaDeSalida        = fechaDeSalida;
+		this.circuitoARecorrer    = circuitoARecorrer;
+		this.terminalDestino 	  = terminalDestino;
+		this.fechaLlegadaADestino = fechaLlegadaADestino;
 	}
 	
 	
@@ -52,6 +56,14 @@ public class Viaje {
 	public Circuito getCircuitoARecorrer() {
 		return this.circuitoARecorrer;
 	}
+
+
+	public LocalDateTime getFechaLlegadaADestino() {
+		return fechaLlegadaADestino;
+	}
 	
+	public TerminalNormal getTerminalOrigen() {
+		return terminalOrigen;
+	}
 
 }
