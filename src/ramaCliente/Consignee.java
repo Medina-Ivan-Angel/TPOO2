@@ -22,12 +22,14 @@ public class Consignee extends Cliente {
 	//Atributos
 	//TODO: Hace falta esto? La orden de importacion ya lo tiene.
 	//OBS: Puede que deba conocerlo de antemano para elegir la mejor ruta/viaje en la terminal
-	//private TerminalNormal origen; 
+	private TerminalNormal origen; 
 	
 	
 	
 	//CONSTRUCTOR
-
+	public Consignee(OrdenImportacion ordenImportacion) {
+		this.setOrden(ordenImportacion);
+	}
 	
 	//Metodos
 	@Override
@@ -47,11 +49,10 @@ public class Consignee extends Cliente {
 	}
 	
 	//Getters and Setters
-	/*
-	//TODO: Este atributo no deberia poder ser cambiado?
-	public void setOrigen(TerminalNormal terminalOrigen) {
-		this.origen = terminalOrigen;
-	}*/
+
+	public TerminalNormal getOrigen() {
+		return this.origen;
+	}
 	
 	public LocalDateTime getFechaYHoraDeLlegada(){
 		
@@ -62,4 +63,8 @@ public class Consignee extends Cliente {
                 		 .orElse(null); 							 // Devolvemos null si no hay mailFecha (Asumiremos que siempre hay?)
 	}
 	
+	@Override
+	public OrdenImportacion getOrden() {
+		return this.getOrden();
+	}
 }
