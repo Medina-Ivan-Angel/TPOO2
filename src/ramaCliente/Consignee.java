@@ -27,9 +27,7 @@ public class Consignee extends Cliente {
 	
 	
 	//CONSTRUCTOR
-	public Consignee(OrdenImportacion ordenImportacion) {
-		 super(ordenImportacion);
-	}
+
 	
 	//Metodos
 	@Override
