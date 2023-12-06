@@ -21,9 +21,6 @@ public class Shipper extends Cliente {
 	
 	
 	//CONSTRUCTOR
-	public Shipper(OrdenExportacion ordenExportacion) {
-		super(ordenExportacion);
-	}
 
 	//Metodos
 	

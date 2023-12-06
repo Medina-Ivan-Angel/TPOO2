@@ -18,9 +18,7 @@ public abstract class Cliente {
 	private List<Mail> buzon = new ArrayList<Mail>(); //buzon donde se almacenan los mails 
 	
 	//CONSTRUCTOR 
-	public Cliente(Orden orden) {
-		this.orden = orden;
-	}
+	
 	
 	
 	//Metodos
@@ -35,6 +33,10 @@ public abstract class Cliente {
 	//Getter and setter
 	public Orden getOrden() {
 		return this.orden;
+	}
+	
+	public void setOrden(Orden orden) {
+		this.orden = orden;
 	}
 	
 	public List<Mail> getBuzon(){
