@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import Terminal.TerminalNormal;
 import ramaAuxiliar.Mail;
 import ramaAuxiliar.MailAviso;
 
@@ -17,7 +18,6 @@ import static org.mockito.Mockito.*;
 import ramaDeposito.Container;
 import ramaFasesDelBuque.Buque;
 import ramaFasesDelBuque.Coordenada;
-import ramaFasesDelBuque.Fase;
 import ramaFasesDelBuque.Outbound;
 import ramaFasesDelBuque.Inbound;
 import ramaFasesDelBuque.Arrived;
@@ -45,6 +45,7 @@ class BuqueTest {
 	@Mock Arrived   arrived;
 	@Mock Working   working;
 	@Mock Departing departing;
+	@Mock TerminalNormal terminalGestionada;
 	
 	
 	@Mock Viaje viaje;
@@ -76,7 +77,10 @@ class BuqueTest {
 		tercerContainer = mock(Container.class);
 		
 		containers = Arrays.asList(primerContainer, segundoContainer, tercerContainer);
-		buque = new Buque(inbound, viaje, posicion, containers);	
+		
+		terminalGestionada = mock(TerminalNormal.class);
+		
+		buque = new Buque(inbound, viaje, posicion, containers, terminalGestionada);	
 		
 		// le asigno comportamiento a los stub:
 		
