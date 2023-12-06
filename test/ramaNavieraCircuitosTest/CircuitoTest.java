@@ -16,6 +16,7 @@ import java.util.List;
 
 class CircuitoTest {
 
+	// Mock: Fake Objects
 	@Mock Tramo primerTramo;
 	@Mock Tramo segundoTramo;
 	@Mock Tramo tercerTramo;
@@ -26,6 +27,7 @@ class CircuitoTest {
 	@BeforeEach
 	void setUp() throws Exception {
 	
+	// Inicializo los Fake Objects:
 	primerTramo = mock(Tramo.class);
 	segundoTramo = mock(Tramo.class);
 	tercerTramo = mock(Tramo.class);

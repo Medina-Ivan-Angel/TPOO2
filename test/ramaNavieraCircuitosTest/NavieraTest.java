@@ -16,7 +16,7 @@ import ramaNavieraCircuitos.Naviera;
 
 class NavieraTest {
 
-	// Mocks: 
+	// Mocks Fake objects: 
 	
 	@Mock Buque primerBuque;
 	@Mock Buque segundoBuque;
@@ -31,10 +31,10 @@ class NavieraTest {
 	Naviera naviera;
  
 	
-
-
 	@BeforeEach
 	void setUp() throws Exception {
+	
+		// Inicializo los Fake Objects:
 		primerBuque = mock(Buque.class);
 		segundoBuque = mock(Buque.class);
 		tercerBuque = mock(Buque.class);

@@ -48,5 +48,9 @@ public class Viaje {
 			
 	}
 	
+	public Circuito getCircuitoARecorrer() {
+		return this.circuitoARecorrer;
+	}
+	
 
 }
