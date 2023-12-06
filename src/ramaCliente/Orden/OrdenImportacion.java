@@ -10,6 +10,7 @@ import Terminal.TerminalNormal;
 import ramaCliente.Cliente;
 import ramaCliente.Consignee;
 import ramaDeposito.Container;
+import ramaDeposito.EmpresaDeTransporte;
 import ramaFasesDelBuque.Buque;
 
 public class OrdenImportacion extends Orden {
@@ -29,9 +30,10 @@ public class OrdenImportacion extends Orden {
 	public OrdenImportacion(Consignee cliente, 
 							Container carga,
 							TerminalNormal origen,
-							Buque buque) {
+							Buque buque, 
+							EmpresaDeTransporte empresaDeTransporte) {
 		
-		super(cliente, carga);
+		super(cliente, carga, empresaDeTransporte);
 		this.origen = origen;
 		this.buque  = buque;
 	}

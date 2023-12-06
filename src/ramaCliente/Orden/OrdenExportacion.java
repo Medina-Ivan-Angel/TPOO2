@@ -8,6 +8,7 @@ import ramaCliente.Shipper;
 import ramaDeposito.Camion;
 import ramaDeposito.Chofer;
 import ramaDeposito.Container;
+import ramaDeposito.EmpresaDeTransporte;
 
 public class OrdenExportacion extends Orden {
 	
@@ -30,9 +31,10 @@ public class OrdenExportacion extends Orden {
 							Shipper cliente,
 							Container carga,
 							Camion camion,
-							Chofer chofer) {
+							Chofer chofer,
+							EmpresaDeTransporte empresaDeTransporte) {
 		
-		super(cliente, carga, camion, chofer);
+		super(cliente, carga, camion, chofer, empresaDeTransporte);
 		this.destino 			  = destino;
 		this.fechaSalidaDeCarga   = fechaSalidaDeCarga;
 		this.fechaLlegadaADestino = fechaLlegadaADestino;

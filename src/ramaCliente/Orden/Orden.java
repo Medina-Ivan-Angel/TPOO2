@@ -8,6 +8,7 @@ import ramaCliente.Servicios.Servicio;
 import ramaDeposito.Camion;
 import ramaDeposito.Chofer;
 import ramaDeposito.Container;
+import ramaDeposito.EmpresaDeTransporte;
 
 public abstract class Orden {
 
@@ -17,25 +18,27 @@ public abstract class Orden {
 	private Container carga;
 	private Camion camion;
 	private Chofer chofer;
+	private EmpresaDeTransporte empresaDeTransporte; //Empresa de transporte
 	
 	//Constructor
 	public Orden(Cliente cliente,
 				 Container carga,
 				 Camion camion,
-				 Chofer chofer) {
+				 Chofer chofer,
+				 EmpresaDeTransporte empresaDeTransporte) {
 		
-		this.cliente = cliente;
-		this.carga	 = carga;
-		this.camion  = camion;
-		this.chofer  = chofer;
-		
+		this.cliente 			 = cliente;
+		this.carga			     = carga;
+		this.camion  			 = camion;
+		this.chofer  			 = chofer;
+		this.empresaDeTransporte = empresaDeTransporte;
 	}
 	
-	public Orden(Cliente cliente, Container carga) {
+	public Orden(Cliente cliente, Container carga, EmpresaDeTransporte empresaDeTransporte) {
 	
 		this.cliente = cliente;
 		this.carga	 = carga;
-	
+		this.empresaDeTransporte = empresaDeTransporte;
 	}
 	
 	//Metodos	

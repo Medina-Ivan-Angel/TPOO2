@@ -1,18 +1,19 @@
 package ramaNavieraCircuitos;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import Terminal.TerminalNormal;
 
 public class Viaje {
 	
-	private LocalDate fechaDeSalida;
+	private LocalDateTime fechaDeSalida;
 	private Circuito circuitoARecorrer;
 	private TerminalNormal terminalDestino;
 	
 	
-	public Viaje(LocalDate fechaDeSalida, Circuito circuitoARecorrer, 
+	public Viaje(LocalDateTime fechaDeSalida, Circuito circuitoARecorrer, 
 			     TerminalNormal terminalDestino) {
 			     
 		this.fechaDeSalida = fechaDeSalida;
@@ -42,7 +43,7 @@ public class Viaje {
 		return this.terminalDestino;
 	}
 	
-	public LocalDate getFechaDeSalida() {
+	public LocalDateTime getFechaDeSalida() {
 	
 		return this.fechaDeSalida;
 			
