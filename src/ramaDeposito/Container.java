@@ -1,6 +1,11 @@
 // Package de la clase.
 package ramaDeposito;
 
+import java.time.LocalDateTime;
+
+import ramaCliente.Orden.Orden;
+import ramaCliente.Orden.OrdenExportacion;
+
 public abstract class Container {
 
 	// Atributos.
@@ -25,6 +30,12 @@ public abstract class Container {
 	
 	public double getLargo(){
 		return(this.largo);
+	}
+	
+	public void aplicarElectricidad(OrdenExportacion orden,
+			double precioPorKw, 
+			LocalDateTime hra){
+		
 	}
 	
 }

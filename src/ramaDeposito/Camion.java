@@ -36,6 +36,14 @@ public class Camion {
 		return(this.hraDeLlegada);
 	}
 	
+	public Container getCarga() {
+		return(this.carga);
+	}
+	
+	public void setCarga(Container carga) {
+		this.carga = carga;
+	}
+	
 		/*
 		 * Corrobora si tiene una carga, y en caso 
 		 * de ser asi la devuelve y deja vacio su

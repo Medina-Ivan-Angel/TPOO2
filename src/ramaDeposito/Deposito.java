@@ -30,13 +30,19 @@ public class Deposito {
 	private List<OrdenImportacion> ordenesDeImportacion = new ArrayList<OrdenImportacion>();
 	private List<Container> containers = new ArrayList<Container>();
 	private double costoPorDia; // Es el costo que le tengo que cobrar a un consignee por almacenamiento excedente.
+	private double precioPorKw;
 	
 	// Constructor.
-	public Deposito(List<OrdenImportacion> ordenesDeImportacion, List<OrdenExportacion> ordenesDeExportacion , List<Container> carga, double costo) {
+	public Deposito(List<OrdenImportacion> ordenesDeImportacion, 
+			List<OrdenExportacion> ordenesDeExportacion , 
+			List<Container> carga, 
+			double costo,
+			double precio) {
 		this.ordenesDeImportacion = ordenesDeImportacion;
 		this.ordenesDeExportacion = ordenesDeExportacion;
 		this.containers = carga;
 		this.costoPorDia = costo;
+		this.precioPorKw = precio;
 	}
 	
 	
@@ -54,6 +60,9 @@ public class Deposito {
 		this.containers.add(container);
 	}
 	
+	public List<Container> getContainers() {
+		return(this.containers);
+	}
 	
 		// Se encarga del accionar cuando un camion
 		// de un Shipper (es decir, un camion con carga
@@ -61,17 +70,37 @@ public class Deposito {
 	public void registrarCargaEnElPuerto(Camion camion) throws Exception {
 		this.clienteInformóChoferYCamion(camion); // --> Validacion.
 		this.camionLlegaConElContainerALaHoraCorrecta(camion); // --> Validacion.
+		this.aplicarServicioElectricidad(camion.getCarga(), camion.getHraDeLlegada());
 		this.containers.add(camion.descargar()); // --> Accion. (Si es que las validaciones no fallan).
 	}
 	
 	
+	private void aplicarServicioElectricidad(Container carga, LocalDateTime hra) {
+		OrdenExportacion orden = this.getOrdenConReefer(carga);
+		carga.aplicarElectricidad(orden, this.precioPorKw, hra);
+	}
+
+
+	private OrdenExportacion getOrdenConReefer(Container carga) {
+		OrdenExportacion ordenADevolver = null;
+		for(OrdenExportacion orden : ordenesDeExportacion) {
+			if(orden.getCarga().equals(carga)) {
+				ordenADevolver = orden;
+			}
+		}
+		return ordenADevolver;
+	}
+
+
 		// Se encarga del accionar cuando un camion
 	 	// de un Consignee (es decir, un camion sin carga
 	 	// que viene a retirar una) llega al deposito.
 	public void cargarCamion(Camion camion) throws Exception {
 		this.clienteInformóChoferYCamion(camion); // --> Validacion.
 		this.camionLlegoDentroDeLasHorasAsignadas(camion); // --> Validacion.
-		camion.cargar(this.containerCorrespondiente(camion)); // --> Accion. (Si es que las validaciones no fallan).
+	    Container container = this.containerCorrespondiente(camion);
+	    camion.cargar(container); // --> Accion. (Si es que las validaciones no fallan).
+	    this.getContainers().remove(container); // --> Accion. (Si es que las validaciones no fallan).
 	}
 
 	
@@ -152,7 +181,7 @@ public class Deposito {
 					orden.addServicio(
 						new AlmacenamientoExcedente(
 							this.costoPorDia, 
-							this.calcularEstadia(camion)));
+							this.calcularEstadiaDeImportacion(camion)));
 	            }
 			}
 		}
@@ -160,7 +189,7 @@ public class Deposito {
 
 
 		// Calcula el precio extra por pasar las 24hs en deposito.
-	private double calcularEstadia(Camion camion) {
+	private double calcularEstadiaDeImportacion(Camion camion) {
 		return(this.calcularCantDeHoras(camion) * this.costoPorDia);
 	}
 

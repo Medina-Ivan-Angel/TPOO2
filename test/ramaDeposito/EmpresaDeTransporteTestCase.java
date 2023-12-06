@@ -41,4 +41,11 @@ public class EmpresaDeTransporteTestCase {
 		assertEquals(3, MDTransporte.getEmpleados().size());
 	}
 	
+	@Test
+	public void testAddCamion() {
+		camion3 = mock(Camion.class);
+		MDTransporte.addCamion(camion3);
+		assertEquals(3, MDTransporte.getCamiones().size());
+	}
+	
 }

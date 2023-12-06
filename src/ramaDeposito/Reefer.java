@@ -1,6 +1,13 @@
 // Package de la clase.
 package ramaDeposito;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+import ramaCliente.Orden.Orden;
+import ramaCliente.Orden.OrdenExportacion;
+import ramaCliente.Servicios.Electricidad;
+
 public class Reefer extends Container{
 
 	// Atributos.
@@ -27,5 +34,15 @@ public class Reefer extends Container{
 		return(this.consumo * tiempo);
 	}
 	
+	@Override
+	public void aplicarElectricidad(OrdenExportacion orden, 
+			double precioPorKw, LocalDateTime hra) {
+		
+		Duration duracion = Duration.between(
+				hra, orden.getFechaSalidaDeCarga());
+	
+		orden.addServicio(new Electricidad(
+				this, precioPorKw, duracion));
+	}
 
 }

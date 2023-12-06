@@ -9,6 +9,7 @@ import ramaDeposito.Camion;
 import ramaDeposito.Chofer;
 import ramaDeposito.Container;
 import ramaDeposito.EmpresaDeTransporte;
+import ramaFasesDelBuque.Buque;
 
 public abstract class Orden {
 
@@ -19,26 +20,32 @@ public abstract class Orden {
 	private Camion camion;
 	private Chofer chofer;
 	private EmpresaDeTransporte empresaDeTransporte; //Empresa de transporte
+	private Buque buque; 						
 	
 	//Constructor
 	public Orden(Cliente cliente,
 				 Container carga,
 				 Camion camion,
 				 Chofer chofer,
-				 EmpresaDeTransporte empresaDeTransporte) {
+				 EmpresaDeTransporte empresaDeTransporte,
+				 Buque buque) {
 		
 		this.cliente 			 = cliente;
 		this.carga			     = carga;
 		this.camion  			 = camion;
 		this.chofer  			 = chofer;
 		this.empresaDeTransporte = empresaDeTransporte;
+		this.buque               = buque;
 	}
 	
-	public Orden(Cliente cliente, Container carga, EmpresaDeTransporte empresaDeTransporte) {
-	
+	public Orden(Cliente cliente, 
+			Container carga, 
+			EmpresaDeTransporte empresaDeTransporte, 
+			Buque buque) {
 		this.cliente = cliente;
 		this.carga	 = carga;
 		this.empresaDeTransporte = empresaDeTransporte;
+		this.buque = buque;
 	}
 	
 	//Metodos	
@@ -54,6 +61,10 @@ public abstract class Orden {
 	
 	public Chofer getChofer() {
 		return this.chofer;
+	}
+	
+	public Buque getBuque() {
+		return this.buque;
 	}
 	
 	public Container getCarga() {
