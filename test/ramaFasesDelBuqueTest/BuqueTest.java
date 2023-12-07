@@ -35,9 +35,6 @@ class BuqueTest {
 	@Mock Mail dummyMail;
 	@Mock MailAviso dummyMailAviso;
 	
-	
-	
-	
 	// Mocks Fake Objects:
 	
 	@Mock Outbound  outbound;
@@ -80,7 +77,7 @@ class BuqueTest {
 		
 		terminalGestionada = mock(TerminalNormal.class);
 		
-		//buque = new Buque(inbound, viaje, posicion, containers, terminalGestionada);	
+		buque = new Buque(inbound, viaje, posicion, containers, terminalGestionada);	
 		
 		// le asigno comportamiento a los stub:
 		
@@ -95,27 +92,7 @@ class BuqueTest {
 		assertEquals(0.0, buque.calcularDistancia(posicion));
 		
 	}
-	
-	/*
-	@Test
-	void testSetEstado() {
-	// TODO: agregar recorrido de busqueda que hablamos en min 58 obs 
-	// para buscar a la terminal gestionada en la lista de tramos del circuito
-	
-		buque.setEstado(outbound);
 		
-		Coordenada nuevaPosicion = new Coordenada(50, 50);
-		
-		buque.setPosicion(nuevaPosicion);
-		
-		buque.estadoActual();
-	
-		assertEquals(inbound, buque.getEstado()); 	
-	}
-	*/
-	
-	
-	
 	@Test
 	void testEstadoActual() {
 	
@@ -125,30 +102,12 @@ class BuqueTest {
 		
 	}
 	
-	/*
-	// TODO: no funciona el depart() de buque
-	
-	@Test
-	void testDepart() {
-	
-		buque.setEstado(working);
-	
-		buque.depart();
-		
-		assertEquals(departing, buque.getEstado());
-		
-	} */
-	
-	
-	
 	@Test
 	void testGetViaje() {
 	
 		assertEquals(viaje, buque.getViaje());
 		
 	}
-	
-	
 	
 	@Test
 	void testGetPosicion() {

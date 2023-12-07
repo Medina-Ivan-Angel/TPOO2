@@ -16,11 +16,12 @@ import ramaNavieraCircuitos.Viaje;
 	private Viaje viaje;
 	private Coordenada posicion;
 	private List<Container> containers;
-	private TerminalGestionada terminalGestionada;
+	private TerminalNormal terminalGestionada;
 	
 	// CONSTRUCTOR:
+	
 	public Buque(Fase estado, Viaje viaje, Coordenada posicion,
-				 List<Container> containers, TerminalGestionada terminalGestionada) {
+				 List<Container> containers, TerminalNormal terminalGestionada) {
 				 
 		this.viaje = viaje;
 		this.estado = estado;
@@ -47,24 +48,18 @@ import ramaNavieraCircuitos.Viaje;
 		   // Punto (X2; Y2) coordenadas del destino del buque
 		   
 		   double distancia = Math.sqrt((Math.pow((coordenadaDestinoX - coordenadaBuqueX), 2) + Math.pow((coordenadaDestinoY - coordenadaBuqueY), 2))); 
-		   
-		    
+		   	    
 		 return distancia;
 		
 	}
 	
 	public void darPreaviso() {
-		/* TODO: enviar un mail de preaviso con un buque a la Terminal 
-		 para que informe a los consignees */
-		 
+	
 		 this.viaje.getTerminalDestino().recibirPreaviso(this);
 	}
 	
 	public void darPostAviso() {
-		/*
-		 * TODO: enviar un mail a la terminal que le diga que el buque se está yendo.
-		 * 
-		 * */
+	
 		 this.viaje.getTerminalDestino().recibirPostAviso(this);
 	}
 	
@@ -109,9 +104,7 @@ import ramaNavieraCircuitos.Viaje;
 		this.estado = nuevoEstado;
 	}
 	
-	public TerminalGestionada getTerminalGestionada() {
+	public TerminalNormal getTerminalGestionada() {
 		return this.terminalGestionada;
 	}
-
-	
 }
