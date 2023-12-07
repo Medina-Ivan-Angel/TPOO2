@@ -13,8 +13,8 @@ public class Naviera {
 	
 
 	public Naviera(List<Buque> flota, List<Circuito> circuitosMaritimos) {
-		this.flota = new ArrayList<Buque>();
-		this.circuitosMaritimos = new ArrayList<Circuito>();
+		this.flota = new ArrayList<>(flota);
+		this.circuitosMaritimos = new ArrayList<>(circuitosMaritimos);
 	}
 	
 	/*

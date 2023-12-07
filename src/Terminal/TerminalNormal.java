@@ -32,6 +32,9 @@ public class TerminalNormal {
 
 	
 	public void recibirPostAviso(Buque buque) {}
+
+
+	public void depart(Buque buque) {}
 	
 	
 }

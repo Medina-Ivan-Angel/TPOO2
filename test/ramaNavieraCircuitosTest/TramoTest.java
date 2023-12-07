@@ -19,11 +19,6 @@ class TramoTest {
 	@Mock TerminalNormal origen;
 	@Mock TerminalNormal destino;
 	
-	// Mocks Stub: 
-	@Mock double distanciaEntrePuertos;
-	@Mock double duracionDelTramo;
-	@Mock double costoDelTramo;
-	
 	Tramo tramo;
 
 	@BeforeEach
@@ -35,17 +30,9 @@ class TramoTest {
 		
 		// Inicializo mocks stubs:
 		
-		distanciaEntrePuertos = mock(double.class);
-		duracionDelTramo = mock(double.class);
-		costoDelTramo = mock(double.class);
-		
-		// establezco comportamientos:
-		
-		when(this.distanciaEntrePuertos).thenReturn(500.0);
-		
-		when(this.duracionDelTramo).thenReturn(10.0);
-		
-		when(this.costoDelTramo).thenReturn(1000.0);
+		double distanciaEntrePuertos = 500.0;
+		double duracionDelTramo = 10.0;
+		double costoDelTramo = 1000.0;
 		
 		tramo = new Tramo(origen, destino, distanciaEntrePuertos, 
 						  duracionDelTramo, costoDelTramo);

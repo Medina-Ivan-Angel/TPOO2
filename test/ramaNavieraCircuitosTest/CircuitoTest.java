@@ -61,12 +61,10 @@ class CircuitoTest {
 	@Test
 	void testAgregarTramo() {
 		
-		List<Tramo> tramosEsperados = Arrays.asList(primerTramo, segundoTramo, tercerTramo);
-		
-		circuito.setTramos(tramosEsperados);
+		List<Tramo> cuatroTramosEsperados = Arrays.asList(primerTramo, segundoTramo, tercerTramo, cuartoTramo);
 		
 		circuito.agregarTramo(cuartoTramo);
 		
-		assertEquals(tramosEsperados, circuito.getTramos());
+		assertEquals(cuatroTramosEsperados, circuito.getTramos());
 	}
 }

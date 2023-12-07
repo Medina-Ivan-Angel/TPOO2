@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Circuito {
 	
-	private List<Tramo> tramos = new ArrayList<Tramo>();
+	private List<Tramo> tramos;
 	
 	public Circuito(List<Tramo> tramos) {
-		this.tramos = tramos;
+		this.tramos = new ArrayList<>(tramos);
 	}
 	
 	/*
