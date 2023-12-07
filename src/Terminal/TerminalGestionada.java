@@ -39,11 +39,12 @@ public class TerminalGestionada extends TerminalNormal{
 	private List<Naviera> navieras = new ArrayList<Naviera>(); 					// Empresas navieras
 	private List<Circuito> circuitosRelacionados = new ArrayList<Circuito>();	// Circuitos que incluyen esta terminal (generar)
 	private MotorBusqueda busquedas;
-	private double costoPorPesado;	
+	private double costoPorPesado;	//Costo fijo de pesado
+	
+	private Plan mejorPlan;	// Define que criterio utilizar para encontrar el mejor circuito
 	
 	private Deposito deposito; // Deposito donde se realiza la carga/descarga
-	// TODO: Añadir motor de busqueda
-	
+
 	//Constructor
 	public TerminalGestionada(Coordenada posicion, 
 							  List<Naviera> navieras,
@@ -62,15 +63,16 @@ public class TerminalGestionada extends TerminalNormal{
 	
 	
 	//Metodos
-	public Circuito mejorCircuito() {
-		/*
-		 *  ---POSIBLE STRATEGY---
- 			El concepto de mejor debe poder ser seteado y cambiado dinamicamente en la TG.
-   			Conceptos de "mejor" :  Menor tiempo total de recorrido entre origen y destino.
-			  Menor precio total de recorrido entre origen y destino.
-			  Menor cantidad de terminales intermedias entre origen y destino
-		 */
-		return null;
+	public Circuito mejorCircuito(TerminalNormal origen, TerminalNormal destino) {
+		
+		//Obtenemos una lista de circuitos
+		List<Circuito> circuitos = this.navieras.stream()
+		        					   .flatMap(naviera -> naviera.getCircuitosMaritimos().stream()) //Aplanamos las listas en un solo flujo continuo de circuitos.
+		        					   .collect(Collectors.toList()); //Convertir en lista
+		
+		
+		// Segun el plan que hayamos seteado obtenemos distintos resultados de Circuito.
+		return this.mejorPlan.operacion(origen, destino, circuitos);
 	}
 	
 	public void exportacion(Shipper shipper, LocalDateTime fechaS, 
@@ -126,11 +128,6 @@ public class TerminalGestionada extends TerminalNormal{
 		// Se asume que siempre se asignara el mail correcto con el cliente correcto.
 		
 		cliente.recibirMail(mail); //Enviamos el mail al cliente correspondiente
-	}
-	
-	
-	public Viaje buscarMejorRutaParaShipper(Shipper shipper) {
-		return null;
 	}
 	
 	
@@ -219,22 +216,27 @@ public class TerminalGestionada extends TerminalNormal{
 	    						.filter(consignee -> consignee.getOrden().getBuque().equals(buque)) //Stream de consignees que tengan al buque
 								.forEach(consignee -> consignee.recibirMail(new MailFactura(new FacturaConsignee(LocalDateTime.now(), consignee)))); // Creamos el mail factura y la factura dentro del mail con la fecha actual y la enviamos al consignee
 		
+	    
 	}
 	
 	//Esta es una señal que se envia al buque para que inicie la carga/descarga en puerto
 	public void iniciarCargaDescarga(Buque buque) {
 		buque.iniciarCargaYDescarga();
 	}
-	
-	//Getters and Setters
-	public List<Naviera> getNavieras(){
-		return this.navieras;
-	}
-
 
 	//Se envia la señal "depart" al buque al finalizar la carga/descarga para que zarpe
 	public void depart(Buque buque) {
 		buque.depart();
+	}
+	
+	//Getters and Setters
+	
+	public List<Naviera> getNavieras(){
+		return this.navieras;
+	}
+
+	public void setMejorPlan(Plan plan) {
+		this.mejorPlan = plan;
 	}
 	
 	
