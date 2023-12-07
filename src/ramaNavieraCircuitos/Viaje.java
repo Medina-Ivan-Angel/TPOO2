@@ -16,8 +16,10 @@ public class Viaje {
 
 	private LocalDateTime fechaLlegadaADestino;
 	
-	public Viaje(LocalDateTime fechaDeSalida, Circuito circuitoARecorrer, 
-			     TerminalNormal terminalDestino, LocalDateTime fechaLlegadaADestino) {
+	public Viaje(LocalDateTime fechaDeSalida, 
+			Circuito circuitoARecorrer, 
+			TerminalNormal terminalDestino, 
+			LocalDateTime fechaLlegadaADestino) {
 			     
 		this.fechaDeSalida        = fechaDeSalida;
 		this.circuitoARecorrer    = circuitoARecorrer;

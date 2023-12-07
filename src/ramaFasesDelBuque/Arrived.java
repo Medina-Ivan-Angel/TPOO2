@@ -23,7 +23,6 @@ public class Arrived implements Fase {
 	
 	@Override 
 	public void accion(Buque buque) {
-		
 		if (distanciaALaTerminalIgualACero(buque)) {
 			buque.iniciarCargaYDescarga(); 
 			buque.setEstado(this.proximoEstado);

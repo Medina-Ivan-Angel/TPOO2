@@ -14,6 +14,7 @@ import ramaCliente.Consignee;
 import ramaDeposito.Camion;
 import ramaDeposito.Chofer;
 import ramaDeposito.Container;
+import ramaDeposito.EmpresaDeTransporte;
 import ramaFasesDelBuque.Buque;
 
 class OrdenImportacionTest {
@@ -33,6 +34,7 @@ class OrdenImportacionTest {
 	@Mock LocalDateTime fechaLlegadaDeCargaReemplazo;
 	@Mock Camion camionReemplazo; 
 	@Mock Chofer choferReemplazo;
+	@Mock EmpresaDeTransporte emp1;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -46,9 +48,10 @@ class OrdenImportacionTest {
 		cliente				= mock(Consignee.class);
 		carga				= mock(Container.class);
 		
+		emp1 				= mock(EmpresaDeTransporte.class);
 		
 		//Instaciamos la orden de Importacion
-		ordenImportacion = new OrdenImportacion(cliente, carga, terminalOrigen, buque);
+		ordenImportacion = new OrdenImportacion(cliente, carga, terminalOrigen, buque, emp1);
 		
 		//Seteamos los valores que deberian configurarse en la terminal
 		ordenImportacion.setFechaLlegadaDeCarga(fechaLlegadaDeCarga);

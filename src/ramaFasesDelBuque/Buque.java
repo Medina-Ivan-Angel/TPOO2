@@ -4,6 +4,7 @@ import java.lang.Math;
 import java.util.ArrayList;
 import java.util.List;
 
+import Terminal.TerminalGestionada;
 import Terminal.TerminalNormal;
 import ramaDeposito.Container;
 import ramaNavieraCircuitos.Viaje;
@@ -15,11 +16,11 @@ import ramaNavieraCircuitos.Viaje;
 	private Viaje viaje;
 	private Coordenada posicion;
 	private List<Container> containers;
-	private TerminalNormal terminalGestionada;
+	private TerminalGestionada terminalGestionada;
 	
 	// CONSTRUCTOR:
 	public Buque(Fase estado, Viaje viaje, Coordenada posicion,
-				 List<Container> containers, TerminalNormal terminalGestionada) {
+				 List<Container> containers, TerminalGestionada terminalGestionada) {
 				 
 		this.viaje = viaje;
 		this.estado = estado;
@@ -108,7 +109,7 @@ import ramaNavieraCircuitos.Viaje;
 		this.estado = nuevoEstado;
 	}
 	
-	public TerminalNormal getTerminalGestionada() {
+	public TerminalGestionada getTerminalGestionada() {
 		return this.terminalGestionada;
 	}
 
