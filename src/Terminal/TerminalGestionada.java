@@ -80,7 +80,7 @@ public class TerminalGestionada extends TerminalNormal{
 			Camion cm, Chofer ch, EmpresaDeTransporte e,
 			Buque b, List<Servicio> s) {
 		
-		Viaje mejorRuta = this.busquedas.mejorRuta();   // Se elije la ruta.
+		//Viaje mejorRuta = this.busquedas.mejorRuta();   // Se elije la ruta.
 		
 		OrdenExportacion orden = new OrdenExportacion(
 				shipper.getDestino(), 

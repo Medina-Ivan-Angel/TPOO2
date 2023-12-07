@@ -85,7 +85,7 @@ public class DepositoTestCase {
 		
 		
 		// Uso el constructor para crear un deposito con las instancias ya creadas.
-		deposito = new Deposito(ordenesImp, ordenesExp, containers, 1000);
+		deposito = new Deposito(ordenesImp, ordenesExp, containers, 1000, 1000);
 	}
 	
 	@Test
