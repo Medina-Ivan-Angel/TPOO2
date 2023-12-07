@@ -22,6 +22,10 @@ public class TerminalNormal {
 	public Coordenada getPosicion() {
 		return this.posicion;
 	}
+	
+	public void setPosicion(Coordenada posicion) {
+		this.posicion = posicion;
+	}
 
 	/* TODO: El buque llama a este método, al enviar un preaviso y 
 	 esta terminal informa a todos los consignees con un MailAviso  */

@@ -32,11 +32,17 @@ public class Inbound implements Fase {
 		
 	public boolean elBuqueArrivo(Buque buque) {
 		
-		return (buque.calcularDistancia(posicionDeLaTerminalGestionadaEnLaListaDeTramosEs(buque)) == 0.0); 	
+		return (buque.calcularDistancia(terminalGestionadaEnLaListaDeTramosEs(buque).getPosicion()) == 0.0);  	
 	}
 	
 	
-	public Coordenada posicionDeLaTerminalGestionadaEnLaListaDeTramosEs(Buque buque) {
+	public TerminalNormal terminalGestionadaEnLaListaDeTramosEs(Buque buque) {
+	
+		/*
+		 * 1) comprobamos si existe la terminal gestionada
+		 * 2) en caso de que exista, devolvemos esa terminal, sino lanzamos una 
+		 * excepción.
+		 * */
 	
 		List<Tramo> tramosDelBuque = buque.getViaje().getCircuitoARecorrer().getTramos();
 		Boolean hayTerminal = tramosDelBuque.stream()
@@ -44,7 +50,7 @@ public class Inbound implements Fase {
 	
 		if (hayTerminal) {
 		
-        	return buque.getTerminalGestionada().getPosicion();
+        	return buque.getTerminalGestionada();
         	
     	} else {
     		
