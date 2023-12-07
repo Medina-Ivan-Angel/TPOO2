@@ -22,6 +22,10 @@ public class TerminalNormal {
 	public Coordenada getPosicion() {
 		return this.posicion;
 	}
+	
+	public void setPosicion(Coordenada posicion) {
+		this.posicion = posicion;
+	}
 
 	
 	public void recibirPreaviso(Buque buque) {}
