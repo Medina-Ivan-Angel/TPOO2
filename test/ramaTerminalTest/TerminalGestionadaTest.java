@@ -1,7 +1,9 @@
 package ramaTerminalTest;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -13,11 +15,21 @@ import org.mockito.Mock;
 
 import Terminal.TerminalGestionada;
 import Terminal.TerminalNormal;
+import ramaAuxiliar.Mail;
+import ramaAuxiliar.MailFecha;
 import ramaCliente.Cliente;
 import ramaCliente.Consignee;
 import ramaCliente.Shipper;
+import ramaCliente.Orden.OrdenExportacion;
+import ramaCliente.Orden.OrdenImportacion;
+import ramaDeposito.Camion;
+import ramaDeposito.Chofer;
 import ramaDeposito.Container;
 import ramaDeposito.Deposito;
+import ramaDeposito.Dry;
+import ramaDeposito.EmpresaDeTransporte;
+import ramaDeposito.Reefer;
+import ramaDeposito.Tanque;
 import ramaFasesDelBuque.Buque;
 import ramaFasesDelBuque.Coordenada;
 import ramaFasesDelBuque.Fase;
@@ -36,6 +48,7 @@ class TerminalGestionadaTest {
 	Coordenada c3;
 	Coordenada c4;
 	Coordenada c5;
+
 	
 	//Buques
 	Buque buque1;
@@ -139,6 +152,36 @@ class TerminalGestionadaTest {
 	@Mock TerminalNormal Sudafrica;
 	@Mock TerminalNormal China;
 	
+	//Empresas de Transporte para las ordenes
+	@Mock EmpresaDeTransporte emp1;
+	@Mock EmpresaDeTransporte emp2;
+	@Mock EmpresaDeTransporte emp3;
+	
+	@Mock Camion camion1;
+	@Mock Camion camion2;
+	@Mock Camion camion3;
+	
+	@Mock Chofer chofer1;
+	@Mock Chofer chofer2;
+	@Mock Chofer chofer3;
+	
+	//Containers para las ordenes de exp/imp
+	Reefer reefer;
+	Dry dry;
+	Tanque tanque;
+	
+	
+	//Ordenes de Importacion
+	OrdenImportacion ordenI1;
+	OrdenImportacion ordenI2;
+	OrdenImportacion ordenI3;
+	
+	OrdenExportacion ordenE1;
+	OrdenExportacion ordenE2;
+	OrdenExportacion ordenE3;
+	
+	
+	
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -169,13 +212,38 @@ class TerminalGestionadaTest {
 		fechaL3		= mock(LocalDateTime.class);
 		fechaL4		= mock(LocalDateTime.class);
 		fechaL5		= mock(LocalDateTime.class);
-				
+		
+		//Empresas de transporte para las ordenes
+		emp1 = mock(EmpresaDeTransporte.class);
+		emp2 = mock(EmpresaDeTransporte.class);
+		emp3 = mock(EmpresaDeTransporte.class);
+		
+		//Camiones y choferes
+		camion1 = mock(Camion.class);
+		camion2 = mock(Camion.class);
+		camion3 = mock(Camion.class);
+		
+		chofer1 = mock(Chofer.class);
+		chofer2 = mock(Chofer.class);
+		chofer3 = mock(Chofer.class);
+		//Containers para las ordenes
+		reefer = new Reefer(10, 10, 20, 1000, 50);
+		dry	   = new Dry(10, 20, 30, 1000);
+		tanque = new Tanque(10, 30, 30, 1000);
+		
 		//Coordenadas de los buques
-		c1 = new Coordenada(10,10);
-		c2 = new Coordenada(20,10);
-		c3 = new Coordenada(30,10);
-		c4 = new Coordenada(40,10);
-		c5 = new Coordenada(50,10);
+		c1				 = new Coordenada(1000,10);
+		c2 				 = new Coordenada(2000,10);
+		c3 				 = new Coordenada(3000,10);
+		c4 				 = new Coordenada(4000,10);
+		c5 				 = new Coordenada(5000,10);
+		posicionTerminal = new Coordenada(0,0);
+		
+
+		//Creamos las listas de containers que son la carga de los buques
+		List<Container> cargaReefer = Arrays.asList(reefer);
+		List<Container> cargaDry = Arrays.asList(dry);
+		List<Container> cargaTanque = Arrays.asList(tanque);
 		
 		/*Fase estado,
 		 * Viaje viaje, 
@@ -183,9 +251,10 @@ class TerminalGestionadaTest {
 		 * List<Container> containers,
 		 * TerminalGestionada terminalGestionada
 		*/
-		buque1 = new Buque(new Outbound(),viaje1,c1,null, terminalGestionada);
-		buque2 = new Buque(new Outbound(),viaje2,c2,null, terminalGestionada);
-		buque3 = new Buque(new Outbound(),viaje3,c3,null, terminalGestionada);
+	
+		buque1 = new Buque(new Outbound(),viaje1,c1,cargaReefer, terminalGestionada);
+		buque2 = new Buque(new Outbound(),viaje2,c2,cargaDry, terminalGestionada);
+		buque3 = new Buque(new Outbound(),viaje3,c3,cargaTanque, terminalGestionada);
 		buque4 = new Buque(new Outbound(),viaje4,c4,null, terminalGestionada);
 		buque5 = new Buque(new Outbound(),viaje5,c5,null, terminalGestionada);
 		
@@ -254,21 +323,85 @@ class TerminalGestionadaTest {
 		
 		//Clientes
 		shipper1 = new Shipper();
+		shipper1.setOrden(ordenE1); //Asignamos la orden al shipper
+		
 		shipper2 = new Shipper();
+		shipper2.setOrden(ordenE2); //Asignamos la orden al shipper
+		
 		shipper3 = new Shipper();
+		shipper3.setOrden(ordenE3); //Asignamos la orden al shipper
 		
-		consignee1 = new Consignee(ordenImportacion1);
-		consignee2 = new Consignee(ordenImportacion2);
-		consignee3 = new Consignee(ordenImportacion3);
+		consignee1 = new Consignee(ordenI1);
+		consignee2 = new Consignee(ordenI2);
+		consignee3 = new Consignee(ordenI3);
 		
-		//TODO: CREAR LAS ORDENES DE IMPORTACION, van a requerir de empresasdetransporte.
+		//Instanciamos y Asignamos las ordenes
 		
+		/*
+		 * Consignee cliente, 
+		   Container carga,
+		   TerminalNormal origen,
+		   Buque buque, 
+		   EmpresaDeTransporte empresaDeTransporte
+		 */
 		
+		ordenI1 = new OrdenImportacion(consignee1, reefer, BuenosAires, buque1, emp1);
+		ordenI2 = new OrdenImportacion(consignee2, dry, BuenosAires, buque2, emp2);
+		ordenI3 = new OrdenImportacion(consignee3, tanque, BuenosAires, buque3, emp3);
+		
+		/*
+		 * TerminalNormal destino,
+			LocalDateTime fechaSalidaDeCarga,
+			LocalDateTime fechaLlegadaADestino,
+			Shipper cliente,
+			Container carga,
+		    Camion camion,
+			Chofer chofer,
+			EmpresaDeTransporte empresaDeTransporte,
+			Buque buque
+		 */
+		
+		ordenE1 = new OrdenExportacion(Cadiz, fecha1, fechaL1, shipper1, reefer,camion1,chofer1, emp1, buque1);
+		ordenE2 = new OrdenExportacion(Marsella, fecha2, fechaL2, shipper2, dry, camion2,chofer2, emp2, buque2);
+		ordenE3 = new OrdenExportacion(China, fecha3, fechaL3, shipper3, tanque, camion3,chofer3,emp3, buque3);
+		
+		//Instanciamos la terminal Gestionada
+		/*
+		 * Coordenada posicion, 
+		   List<Naviera> navieras,
+		   List<Cliente> clientes,
+		   Deposito deposito,
+		   double costo
+		 * 
+		 */
+		terminalGestionada = new TerminalGestionada(posicionTerminal, navieras,clientes,depositoMock, 100);
+	
+		//Stub depositoMock. Establecemos el comportamiento
+		doNothing().when(depositoMock).addOrdenImportacion(ordenI1);
+		doNothing().when(depositoMock).addOrdenImportacion(ordenI2);
+		doNothing().when(depositoMock).addOrdenImportacion(ordenI3);
+		
+		doNothing().when(depositoMock).addOrdenExportacion(ordenE1);
+		doNothing().when(depositoMock).addOrdenExportacion(ordenE2);
+		doNothing().when(depositoMock).addOrdenExportacion(ordenE3);
+	
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testImportacion() {
+		
+		/*
+		 * El consignee1 hace realiza un operacion de importacion en la terminal
+		 * 1) debe recibir un mail con la fecha de llegada del buque
+		 */
+		
+		terminalGestionada.importacion(consignee1); 
+		
+		
+		MailFecha mailFecha = new MailFecha(consignee1.getOrden().getfechaLlegadaDeCarga());
+		List<Mail> listaEsperada = Arrays.asList(mailFecha);
+		
+		assertEquals(listaEsperada,consignee1.getBuzon());
 	}
 
 }

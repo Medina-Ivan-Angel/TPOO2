@@ -22,6 +22,8 @@ import ramaCliente.Servicios.Servicio;
 import ramaDeposito.Camion;
 import ramaDeposito.Chofer;
 import ramaDeposito.Container;
+import ramaDeposito.EmpresaDeTransporte;
+import ramaFasesDelBuque.Buque;
 
 class OrdenExportacionTest {
 
@@ -46,6 +48,10 @@ class OrdenExportacionTest {
 	@Mock Chofer choferReemplazo;
 	@Mock Camion camionReemplazo;
 	
+	//Mock empresa de transporte y buque
+	@Mock EmpresaDeTransporte emp1;
+	@Mock Buque buque1;
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		
@@ -68,13 +74,31 @@ class OrdenExportacionTest {
 		choferReemplazo	= mock(Chofer.class);
 		camionReemplazo = mock(Camion.class);
 		
+		//Empresa y buque
+		emp1   = mock(EmpresaDeTransporte.class);
+		buque1 = mock(Buque.class);
+		
+		/*
+		 * TerminalNormal destino,
+		LocalDateTime fechaSalidaDeCarga,
+		LocalDateTime fechaLlegadaADestino,
+		Shipper cliente,
+		Container carga,
+		Camion camion,
+		Chofer chofer,
+		EmpresaDeTransporte empresaDeTransporte,
+		Buque buque
+		 */
+		
 		ordenExportacion = new OrdenExportacion(terminal,
 												fechaSalidaDeCarga,
 												fechaLlegadaADestino,
 												cliente,
 												container,
 												camion,
-												chofer);
+												chofer,
+												emp1,
+												buque1);
 
 		//Añadimos los servicios a la orden
 		ordenExportacion.addServicio(electricidad);

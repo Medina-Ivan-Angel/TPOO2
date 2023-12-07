@@ -80,7 +80,7 @@ class BuqueTest {
 		
 		terminalGestionada = mock(TerminalNormal.class);
 		
-		buque = new Buque(inbound, viaje, posicion, containers, terminalGestionada);	
+		//buque = new Buque(inbound, viaje, posicion, containers, terminalGestionada);	
 		
 		// le asigno comportamiento a los stub:
 		

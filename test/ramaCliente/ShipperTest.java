@@ -36,7 +36,8 @@ class ShipperTest {
 	        when(ordenExportacion.getCamion()).thenReturn(camion);
 	        
 	        //Instaciamos el Shipper
-	        shipper = new Shipper(ordenExportacion);
+	        shipper = new Shipper();
+	        shipper.setOrden(ordenExportacion);
 			
 		}
 
