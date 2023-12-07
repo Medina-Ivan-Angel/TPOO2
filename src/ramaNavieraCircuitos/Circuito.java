@@ -1,13 +1,16 @@
 package ramaNavieraCircuitos;
 import java.util.List;
+
+import Terminal.TerminalNormal;
+
 import java.util.ArrayList;
 
 public class Circuito {
 	
-	private List<Tramo> tramos;
+	private List<Tramo> tramos = new ArrayList<Tramo>();
 	
 	public Circuito(List<Tramo> tramos) {
-		this.tramos = new ArrayList<Tramo>();
+		this.tramos = tramos;
 	}
 	
 	/*
@@ -29,5 +32,18 @@ public class Circuito {
 	public void agregarTramo(Tramo tramo) {
 		this.tramos.add(tramo);
 	}
+	
+	// Metodos utiles para los Planes de "mejorCircuito()" en TerminalGestionada
+	
+	//El circuito inicia con la terminal pasada por parametro
+	public boolean iniciaConTerminal(TerminalNormal terminal) {
+		return this.tramos.get(0).getOrigen().equals(terminal);
+	}
 
+	//El circuito termina con la terminal pasada por parametro
+	public boolean terminaConTerminal(TerminalNormal terminal) {
+			return this.tramos.get(this.tramos.size() - 1).getDestino().equals(terminal);
+	}
+	
 }
+
